@@ -1,3 +1,9 @@
+<?php
+
+	print_r($targetQuery);
+	die();
+?>
+
 <h1>Titulo</h1>
 <p><?= $targetQuery["Query"]["title"]; ?></p>
 
@@ -18,6 +24,5 @@
 		echo "<td>".$comment['content']."</td>";
 		echo "</tr>";
 	}
-
 	?>
 </table>

@@ -10,8 +10,8 @@ class QueriesController extends AppController {
 		if (!$id) {
             throw new NotFoundException(__('Invalid query'));
         }
-
-        $query = $this->Query->findById($id);
+        $query = $this->Query->find('all', array('conditions'=>array('id'=>$id), 'recursive'=>2));
+       
         if (!$query) {
             throw new NotFoundException(__('Invalid query'));
         }

@@ -1,7 +1,7 @@
 <?php
 
 class Comment extends AppModel{
-	public $belongsTo = 'Query';
+	public $belongsTo = array('Query', 'User');
 	
 }
 

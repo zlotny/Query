@@ -1,7 +1,7 @@
 <?php
 
 class User extends AppModel{
-	public $hasMany = 'Query';
+	//public $hasMany = 'Query';
 	public $hasMany = 'Comment';
 	public $hasAndBelongsToMany = array(
 		'VotesQuery' =>
