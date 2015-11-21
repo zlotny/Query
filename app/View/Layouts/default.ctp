@@ -26,6 +26,7 @@ echo $this->Html->meta(
 			<div class="modal-dialog">
 
 				<!-- Modal content-->
+				<?= $this->Form->create('User', array('action' => '/add')); ?>
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -36,16 +37,16 @@ echo $this->Html->meta(
 							<h3>Regístrate en Query!</h3><br>
 							<div class="col-sm-12">
 								<div class="form-group registro-form">
-									<input class="form-control setPopover" id="focusedInput" type="text" placeholder="Usuario" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-trigger="active" data-original-title="" title="" aria-describedby="popover906376">
+									<input name="data[User][username]" class="form-control setPopover" id="focusedInput" type="text" placeholder="Usuario" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-trigger="active" data-original-title="" title="" aria-describedby="popover906376">
 								</div>
 								<div class="form-group registro-form">
-									<input class="form-control setPopover" id="focusedInput" type="text" placeholder="Correo" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-trigger="active" data-original-title="" title="" aria-describedby="popover906376">
+									<input name="data[User][email]" class="form-control setPopover" id="focusedInput" type="text" placeholder="Correo" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-trigger="active" data-original-title="" title="" aria-describedby="popover906376">
 								</div>
 								<div class="form-group registro-form">
-									<input class="form-control setPopover" id="focusedInput" type="password" placeholder="Contraseña" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."  data-trigger="active" data-original-title="" title="" aria-describedby="popover906376">
+									<input name="data[User][pass]" class="form-control setPopover" id="focusedInput" type="password" placeholder="Contraseña" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."  data-trigger="active" data-original-title="" title="" aria-describedby="popover906376">
 								</div>
 								<div class="form-group registro-form">
-									<input class="form-control setPopover" id="focusedInput" type="password" placeholder="Repite tu contraseña" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-trigger="active" data-original-title="" title="" aria-describedby="popover906376">
+									<input name="data[User][pass2]" class="form-control setPopover" id="focusedInput" type="password" placeholder="Repite tu contraseña" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-trigger="active" data-original-title="" title="" aria-describedby="popover906376">
 								</div>
 							</div>
 
@@ -59,7 +60,7 @@ echo $this->Html->meta(
 								<p class="eula">Registrándote en Query das a entender que aceptas nuestros términos de licencia de usuario. Puedes consultarlos <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">aquí</a></p>
 							</div>
 							<div class="col-sm-3">
-								<button type="button" class="btn btn-info">Registrarse</button>
+								<input type="submit" value="Registrarse" class="btn btn-info" />
 							</div>
 
 						</div>

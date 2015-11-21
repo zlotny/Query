@@ -21,6 +21,18 @@ class User extends AppModel{
 			'unique' => true
 			),
 		);
+
+	public $validate = array(
+			'username' => array(
+                    'rule' => 'notBlank'
+					),
+			'email' => array(
+                    'rule' => 'email'
+					),
+			'pass' => array(
+					'rule' => 'notBlank'
+			)
+	);
 }
 
 ?>
