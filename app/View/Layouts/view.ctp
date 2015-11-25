@@ -103,7 +103,7 @@ echo $this->Html->meta(
 
 		<br/>
 		<div class="container-fluid ">
-			<a href="index.html" ><?php echo $this->Html->image('logo_dark_background.png', array('alt' => 'Logo', 'class' => 'logo')); ?></a>
+			<?php echo $this->Html->image('logo_dark_background.png', array('alt' => 'Logo', 'class' => 'logo', 'url' => array('controller' => 'queries', 'action' => 'index'))); ?>
 		</div>
 		<br>
 

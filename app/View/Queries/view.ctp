@@ -4,7 +4,7 @@
 	<h2 class="query-title"><?= $targetQuery["Query"]["title"]; ?></h2>
 	<div class="container-fluid row">
 		<div class="col-sm-12 col-xs-8">
-			<small class="creator">Creado por <a href='user.html?user=correojulai@correo.com' ><?= $author["username"]; ?></a> - <?= $targetQuery["Query"]["created"]; ?></small>
+			<small class="creator">Creado por <?= $this->Html->link($author["username"], "/users/view/".$author["id"]);?> - <?= $targetQuery["Query"]["created"]; ?></small>
 		</div>
 		<div class="visible-xs col-xs-4">
 			<img src="./img/arrow_up_white.png" alt="Arrow Up" height="15" width="15">
@@ -62,9 +62,10 @@
 				</div>
 				<div class="col-sm-9 col-xs-12 bubble"><?= $comment['content']; ?>
 				</div>
-				<div class="col-sm-2 col-xs-3 restriccion"><img class="profile-picture" src="./img/user-icons/ralph-wiggum.PNG">
+				<div class="col-sm-2 col-xs-3 restriccion"><?php echo $this->Html->image('cambiarme.png', array('alt' => 'Avatar')); ?>
 					<br>
-					<p class=" query-response-user-name"><?= $comment['User']['username']; ?></p>
+
+					<p class=" query-response-user-name"><?= $this->Html->link($comment['User']['username'], "/users/view/".$comment['User']['id']);?></p>
 				</div>
 				<div class="visible-xs col-xs-9">
 					<img src="./img/arrow_up_white.png" alt="Arrow Up" height="30" width="30"><br>

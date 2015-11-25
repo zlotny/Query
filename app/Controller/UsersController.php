@@ -10,6 +10,19 @@ class UsersController extends AppController
 
     }
 
+    public function view($id)
+    {
+        $this->layout = 'view';
+        if (!$id) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+        $user = $this->User->findById($id);
+        if (!$user) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+        $this->set('targetUser', $user);
+    }
+
     public function add()
     {
         if ($this->request->is('post')) {
