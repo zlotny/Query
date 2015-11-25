@@ -23,6 +23,17 @@ class UsersController extends AppController
         $this->set('targetUser', $user);
     }
 
+    public function login(){
+        if ($this->request->is('post')) {
+            if ($this->User->findById($this->request->data['User']['email']);) {
+              $this->Session->write('User.email', $this->request->data['User']['email']);
+            } else {
+                $this->Flash->error("El usuario no existe");
+            }
+            $this->redirect(array('controller' => 'pages', 'action' => 'display'));
+        }
+    }
+
     public function add()
     {
         if ($this->request->is('post')) {
