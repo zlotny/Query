@@ -3,7 +3,7 @@
 	<div class="container-fluid">
 		<div class="navbar-header">
 
-		
+
 			
 			<?php
 			echo $this->Html->link(
@@ -46,8 +46,22 @@
 					</div>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-					<li class="registro"><a href="#" data-toggle="modal" data-target="#registroModal">Registro</a></li>
-					<li><a href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
+					<?php
+					if($this->Session->read("User.email")){
+						echo "<li>";
+						echo $this->Html->link($this->Session->read("User.username"), "/users/view/".$this->Session->read("User.id"));
+						echo "</li>";
+						echo "<li>";
+						echo $this->Html->link("Desconectarse", "/users/logout");
+						echo "</li>";	
+					}else{
+						?>
+						<li class="registro"><a href="#" data-toggle="modal" data-target="#registroModal">Registro</a></li>
+						<li><a href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
+						<?php
+					}
+					?>
+					
 				</ul>
 			</div>
 		</div>
@@ -55,92 +69,89 @@
 
 
 	<div id="registroModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+		<div class="modal-dialog">
 
-            <!-- Modal content-->
-            <?= $this->Form->create('User', array('action' => '/add')); ?>
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png"></img>Registro
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <h3>Regístrate en Query!</h3><br>
+			<!-- Modal content-->
+			<?= $this->Form->create('User', array('action' => '/add')); ?>
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png"></img>Registro
+					</h4>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+						<h3>Regístrate en Query!</h3><br>
 
-                        <div class="col-sm-12">
-                            <div class="form-group registro-form">
-                                <?= $this->Form->input('username', array('label' => false, 'class' => 'form-control setPopover', 'id' => 'focusedInput', 'placeholder' => 'Usuario', 'data-toggle' => 'popover', 'data-placement' => 'right', 'data-content' => 'Introduce tu nombre de usuario.', 'data-trigger' => 'active', 'aria-describedby' => 'popover906376')) ?>
-                            </div>
-                            <div class="form-group registro-form">
-                                <?= $this->Form->input('email', array('label' => false, 'class' => 'form-control setPopover', 'id' => 'focusedInput', 'placeholder' => 'Correo', 'data-toggle' => 'popover', 'data-placement' => 'right', 'data-content' => 'Introduce una cuenta de correo electrónico.', 'data-trigger' => 'active', 'aria-describedby' => 'popover906376')) ?>
-                            </div>
-                            <div class="form-group registro-form">
-                                <?= $this->Form->input('pass', array('label' => false, 'type' => 'password', 'class' => 'form-control setPopover', 'id' => 'focusedInput', 'placeholder' => 'Contraseña', 'data-toggle' => 'popover', 'data-placement' => 'right', 'data-content' => 'Introduce una contraseña.', 'data-trigger' => 'active', 'aria-describedby' => 'popover906376')) ?>
-                            </div>
-                            <div class="form-group registro-form">
-                                <?= $this->Form->input('pass2', array('required' => 'required', 'label' => false, 'type' => 'password', 'class' => 'form-control setPopover', 'id' => 'focusedInput', 'placeholder' => 'Repita su contraseña', 'data-toggle' => 'popover', 'data-placement' => 'right', 'data-content' => 'Repita su contraseña', 'data-trigger' => 'active', 'aria-describedby' => 'popover906376')) ?>
-                            </div>
-                        </div>
+						<div class="col-sm-12">
+							<div class="form-group registro-form">
+								<?= $this->Form->input('username', array('label' => false, 'class' => 'form-control setPopover', 'id' => 'focusedInput', 'placeholder' => 'Usuario', 'data-toggle' => 'popover', 'data-placement' => 'right', 'data-content' => 'Introduce tu nombre de usuario.', 'data-trigger' => 'active', 'aria-describedby' => 'popover906376')) ?>
+							</div>
+							<div class="form-group registro-form">
+								<?= $this->Form->input('email', array('label' => false, 'class' => 'form-control setPopover', 'id' => 'focusedInput', 'placeholder' => 'Correo', 'data-toggle' => 'popover', 'data-placement' => 'right', 'data-content' => 'Introduce una cuenta de correo electrónico.', 'data-trigger' => 'active', 'aria-describedby' => 'popover906376')) ?>
+							</div>
+							<div class="form-group registro-form">
+								<?= $this->Form->input('pass', array('label' => false, 'type' => 'password', 'class' => 'form-control setPopover', 'id' => 'focusedInput', 'placeholder' => 'Contraseña', 'data-toggle' => 'popover', 'data-placement' => 'right', 'data-content' => 'Introduce una contraseña.', 'data-trigger' => 'active', 'aria-describedby' => 'popover906376')) ?>
+							</div>
+							<div class="form-group registro-form">
+								<?= $this->Form->input('pass2', array('required' => 'required', 'label' => false, 'type' => 'password', 'class' => 'form-control setPopover', 'id' => 'focusedInput', 'placeholder' => 'Repita su contraseña', 'data-toggle' => 'popover', 'data-placement' => 'right', 'data-content' => 'Repita su contraseña', 'data-trigger' => 'active', 'aria-describedby' => 'popover906376')) ?>
+							</div>
+						</div>
 
-                    </div>
+					</div>
 
 
-                </div>
-                <div class="modal-footer">
-                    <div class
-                    "container-fluid">
-                    <div class="col-sm-9">
-                        <p class="eula">Registrándote en Query das a entender que aceptas nuestros términos de licencia
-                            de usuario. Puedes consultarlos <a target="_blank"
-                                                               href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">aquí</a>
-                        </p>
-                    </div>
-                    <div class="col-sm-3">
-                        <?php
-                        echo $this->Form->submit('Registrarse', array('class' => 'btn btn-info'));
-                        echo $this->Form->end(); ?>
-                    </div>
+				</div>
+				<div class="modal-footer">
+					<div class
+					"container-fluid">
+					<div class="col-sm-9">
+						<p class="eula">Registrándote en Query das a entender que aceptas nuestros términos de licencia
+							de usuario. Puedes consultarlos <a target="_blank"
+							href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">aquí</a>
+						</p>
+					</div>
+					<div class="col-sm-3">
+						<?php
+						echo $this->Form->submit('Registrarse', array('class' => 'btn btn-info'));
+						echo $this->Form->end(); ?>
+					</div>
 
-                </div>
+				</div>
 
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </div>
 
 
 <div id="loginModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+	<div class="modal-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png"></img>Identificación
-                </h4>
-            </div>
-            <div class="modal-body">
-                <h3>Identifícate...</h3><br>
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png"></img>Identificación
+				</h4>
+			</div>
+			<div class="modal-body">
+				<h3>Identifícate...</h3><br>
+				<?= $this->Form->create('User', array('action' => '/login')); ?>
+				<div class="form-group registro-form">
+					<?= $this->Form->input('useremail', array('label' => false, 'class' => 'form-control setPopover', 'id' => 'focusedInput', 'placeholder' => 'Correo', 'data-toggle' => 'popover', 'data-placement' => 'right', 'data-content' => 'Introduce tu email de usuario.', 'data-trigger' => 'active', 'aria-describedby' => 'popover906376')) ?>
+					
+				</div>
+				<div class="form-group registro-form">
+					<?= $this->Form->input('userpass', array('label' => false, 'type' => 'password', 'class' => 'form-control setPopover', 'id' => 'focusedInput', 'placeholder' => 'Contraseña', 'data-toggle' => 'popover', 'data-placement' => 'right', 'data-content' => 'Introduce tu contraseña.', 'data-trigger' => 'active', 'aria-describedby' => 'popover906376')) ?>
+				</div>
 
-                <div class="form-group registro-form">
-                    <input class="form-control  setPopover" id="focusedInput" type="text" placeholder="Usuario"
-                           data-toggle="popover" data-placement="right"
-                           data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                           data-trigger="active" data-original-title="" title="" aria-describedby="popover906376">
-                </div>
-                <div class="form-group registro-form">
-                    <input class="form-control setPopover" id="focusedInput" type="password" placeholder="Contraseña"
-                           data-toggle="popover" data-placement="right"
-                           data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                           data-trigger="active" data-original-title="" title="" aria-describedby="popover906376">
-                </div>
-
-            </div>
-            <div class="modal-footer ">
-                <button type="button" class="btn btn-success">Login</button>
-            </div>
-        </div>
-    </div>
+			</div>
+			<div class="modal-footer ">
+				<?php
+				echo $this->Form->submit('Identificarse', array('class' => 'btn btn-info'));
+				echo $this->Form->end(); ?>
+			</div>
+		</div>
+	</div>
 </div>

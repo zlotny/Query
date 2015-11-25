@@ -25,30 +25,39 @@ class UsersController extends AppController
 
     public function login(){
         if ($this->request->is('post')) {
-            if ($this->User->findById($this->request->data['User']['email']);) {
-              $this->Session->write('User.email', $this->request->data['User']['email']);
-            } else {
-                $this->Flash->error("El usuario no existe");
-            }
-            $this->redirect(array('controller' => 'pages', 'action' => 'display'));
+            $toLogin = $this->User->findByEmail($this->request->data['User']['useremail']);
+            if($toLogin && $toLogin["User"]["pass"] == $this->request->data['User']['userpass']) {
+              $this->Session->write('User.email', $this->request->data['User']['useremail']);
+              $this->Session->write('User.id', $toLogin['User']['id']);
+              $this->Session->write('User.username', $toLogin['User']['username']);
+          } else {
+            $this->Flash->error("El usuario no existe");
         }
+        $this->redirect(array('controller' => 'queries', 'action' => 'index'));
     }
+}
 
-    public function add()
-    {
-        if ($this->request->is('post')) {
-            if ($this->request->data['User']['pass'] == $this->request->data['User']['pass2']) {
-                if ($this->User->save($this->request->data)) {
-                    $this->Flash->success("Usuario creado satisfactoriamente.");
-                } else {
-                    $this->Flash->success("Error al registrar usuario.");
-                }
+public function logout(){
+    $this->Session->destroy();
+    $this->redirect(array('controller' => 'queries', 'action' => 'index'));
+
+}
+
+public function add()
+{
+    if ($this->request->is('post')) {
+        if ($this->request->data['User']['pass'] == $this->request->data['User']['pass2']) {
+            if ($this->User->save($this->request->data)) {
+                $this->Flash->success("Usuario creado satisfactoriamente.");
             } else {
-                $this->Flash->error("Las contraseñas son distintas.");
+                $this->Flash->success("Error al registrar usuario.");
             }
-            $this->redirect(array('controller' => 'pages', 'action' => 'display'));
+        } else {
+            $this->Flash->error("Las contraseñas son distintas.");
         }
+        $this->redirect(array('controller' => 'queries', 'action' => 'index'));
     }
+}
 }
 
 ?>
