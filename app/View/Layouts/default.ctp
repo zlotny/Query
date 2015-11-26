@@ -167,39 +167,12 @@
                     </div>
                 </div>
 
-                <div id="responderQuery" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
+                
 
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png" ></img>Responder</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container-fluid">
-                                    <div class="col-sm-12">
-                                        <h3>Danos tu solución:</h3><br>
-
-                                        <div class="form-group">
-                                            <textarea class="form-control" rows="8" id="textArea"></textarea>
-                                        </div>
-                                        <div class="form-group pull-right">
-                                            <button type="button" class="btn btn-success">Publicar</button>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            <?= $this->Html->script('jquery-1.11.3') ?>
-            <?= $this->Html->script('bootstrap') ?>
-            <?= $this->Html->script('main') ?>
-            <?= $this->element('defaultScripts'); ?>
+                <?= $this->Html->script('jquery-1.11.3') ?>
+                <?= $this->Html->script('bootstrap') ?>
+                <?= $this->Html->script('main') ?>
+                <?= $this->element('defaultScripts'); ?>
             </body>
             </html>
 

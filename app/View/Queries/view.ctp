@@ -35,7 +35,15 @@
 	<span class="btn btn-primary btn-xs tag">Futuro</span>
 	<span class="btn btn-primary btn-xs tag">Insomnia</span>
 
-	<a class="btn btn-primary pull-right" href="#" data-toggle="modal" data-target="#responderQuery">Responder</a>
+	<?php
+	if($this->Session->read("User.id")){
+		?>
+
+		<a class="btn btn-primary pull-right" href="#" data-toggle="modal" data-target="#responderQuery">Responder</a>
+
+		<?php
+	}
+	?>
 
 
 
@@ -78,3 +86,38 @@
 			<?php
 		}
 		?>
+
+		<div id="responderQuery" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png" ></img>Responder</h4>
+					</div>
+					<div class="modal-body">
+						<div class="container-fluid">
+							<div class="col-sm-12">
+								<?= $this->Form->create('Comment', array('action' => '/add')); ?>
+								<?= $this->Form->input("user_id", array("type" => "hidden", "value" => $this->Session->read("User.id")));?>
+								<?= $this->Form->input("query_id", array("type" => "hidden", "value" => $targetQuery["Query"]["id"]));?>
+
+								<h3>Danos tu solución:</h3><br>
+
+								<div class="form-group">
+									<?= $this->Form->textarea("content", array("class" => "form-control", "placeholder" => "Tu respuesta es...", "id" => "textArea", "rows" => "8"));?>
+								</div>
+								<div class="form-group pull-right">
+									<?= $this->Form->submit('Comentar', array('class' => 'btn btn-info')); ?>
+
+								</div>
+								<?= $this->Form->end(); ?>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
