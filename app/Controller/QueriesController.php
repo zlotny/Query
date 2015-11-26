@@ -41,6 +41,7 @@ class QueriesController extends AppController {
             array('Query.content LIKE'=>'%'.$datos.'%'),
             array('Query.title LIKE'=>'%'.$datos.'%'),)
         ))));
+    }
 
 
 	public function add()
