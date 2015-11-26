@@ -32,31 +32,37 @@ class UsersController extends AppController
           } else {
             $this->Flash->error("El usuario no existe");
         }
-        $this->redirect(array('controller' => 'queries', 'action' => 'index'));
-    }
-}
-
-public function logout(){
-    $this->Session->destroy();
-    $this->redirect(array('controller' => 'queries', 'action' => 'index'));
-
-}
-
-public function add()
-{
-    if ($this->request->is('post')) {
-        if ($this->request->data['User']['pass'] == $this->request->data['User']['pass2']) {
-            if ($this->User->save($this->request->data)) {
-                $this->Flash->success("Usuario creado satisfactoriamente.");
-            } else {
-                $this->Flash->error("Error al registrar usuario.");
-            }
-        } else {
-            $this->Flash->error("Las contraseñas son distintas.");
+            $this->redirect(array('controller' => 'queries', 'action' => 'index'));
         }
-        $this->redirect(array('controller' => 'queries', 'action' => 'index'));
     }
-}
+
+    public function logout(){
+        $this->Session->destroy();
+        $this->redirect(array('controller' => 'queries', 'action' => 'index'));
+
+    }
+
+    public function add()
+    {
+        if ($this->request->is('post')) {
+            if ($this->request->data['User']['pass'] == $this->request->data['User']['pass2']) {
+                if ($this->User->save($this->request->data)) {
+                    $this->Flash->success("Usuario creado satisfactoriamente.");
+                } else {
+                    $this->Flash->error("Error al registrar usuario.");
+                }
+            } else {
+                $this->Flash->error("Las contraseñas son distintas.");
+            }
+            $this->redirect(array('controller' => 'queries', 'action' => 'index'));
+        }
+    }
+
+    public function lang($lang){
+        $this->Cookie->write('lang', $lang);
+        $this->redirect(array('controller' => 'queries', 'action' => 'index'));
+
+    }
 }
 
 ?>

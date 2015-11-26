@@ -44,33 +44,64 @@
 					<div id="search-field" class="input-group">
 						<?php
 						echo $this->Form->input('searchInput', array( 'class'=>'form-control', 'placeholder'=> __("Buscar..."), 'div' => false,'type' =>'text', 'label' => false));
-							echo '<span class="input-group-btn">';
-							echo $this->Form->button( "<span class='glyphicon glyphicon-search'></span>", array('type' => 'submit',
-								'label' => false,
-								'class' => 'btn btn-default',
-								'escape' => false));
-							echo '</span>'
-							?>
+						echo '<span class="input-group-btn">';
+						echo $this->Form->button( "<span class='glyphicon glyphicon-search'></span>", array('type' => 'submit',
+							'label' => false,
+							'class' => 'btn btn-default',
+							'escape' => false));
+						echo '</span>'
+						?>
 
-						</div>
 					</div>
-					<?php
-					echo $this->Form->end();
-					?>
+				</div>
+				<?php
+				echo $this->Form->end();
+				?>
 
-					<ul class="nav navbar-nav navbar-right">
-						<?php
-						if($this->Session->read("User.email")){
-							echo "<li>";
-							echo $this->Html->link($this->Session->read("User.username"), "/users/view/".$this->Session->read("User.id"));
-							echo "</li>";
-							echo "<li>";
-							echo $this->Html->link(__("Desconectarse"), "/users/logout");
-							echo "</li>";	
-						}else{
-							?>
-							<li class="registro"><a href="#" data-toggle="modal" data-target="#registroModal"><?= __("Registro"); ?></a></li>
-							<li><a href="#" data-toggle="modal" data-target="#loginModal"><?= __("Login"); ?></a></li>
+				<ul class="nav navbar-nav navbar-right">
+					<?php
+					if($this->Session->read("User.email")){
+						echo "<li>";
+						echo $this->Html->link($this->Session->read("User.username"), "/users/view/".$this->Session->read("User.id"));
+						echo "</li>";
+						echo "<li>";
+						echo $this->Html->link(__("Desconectarse"), "/users/logout");
+						echo "</li>";	
+					}else{
+						?>
+						<li class="registro"><a href="#" data-toggle="modal" data-target="#registroModal"><?= __("Registro"); ?></a></li>
+						<li><a href="#" data-toggle="modal" data-target="#loginModal"><?= __("Login"); ?></a></li>
+
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-globe"></i><span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<?php 
+								echo "<li>". $this->Html->link(
+									$this->Html->image('lang/es.png', array('class' => 'lang')).' Español',
+									'/users/lang/es_ES', 
+									array('escape'=>false)
+									)."</li>";
+
+								echo "<li>". $this->Html->link(
+									$this->Html->image('lang/gb.png', array('class' => 'lang')).' English',
+									'/users/lang/en_GB', 
+									array('escape'=>false)
+									)."</li>";
+
+								echo "<li>". $this->Html->link(
+									$this->Html->image('lang/pt.png', array('class' => 'lang')).' Português',
+									'/users/lang/pt_PT', 
+									array('escape'=>false)
+									)."</li>";
+
+								echo "<li>". $this->Html->link(
+									$this->Html->image('lang/fr.png', array('class' => 'lang')).' Français',
+									'/users/lang/fr_FR', 
+									array('escape'=>false)
+									)."</li>";
+									?>
+								</ul>
+							</li>
 							<?php
 						}
 						?>
