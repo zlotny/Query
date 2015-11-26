@@ -1,6 +1,6 @@
 		<div class="container-fluid">
 			<div class="col-sm-8">
-				<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#pregunta">Publica tu Query!</a>
+				<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#pregunta"><?= __("Publica tu Query!"); ?></a>
 				<span class="pull-right">
 					<ul class="nav nav-pills">
 						<li class="dropdown">
@@ -8,10 +8,10 @@
 								Filtro <span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Últimas preguntas</a></li>
-								<li><a href="#">Más respondidas (30 días)</a></li>
+								<li><a href="#"><?= __("Últimas preguntas"); ?></a></li>
+								<li><a href="#"><?= __("Más respondidas (30 días)"); ?></a></li>
 								<li class="divider"></li>
-								<li class="disabled"><a href="#">Mis preguntas</a></li>
+								<li class="disabled"><a href="#"><?= __("Mis preguntas"); ?></a></li>
 							</ul>
 						</li>
 					</ul>
@@ -27,7 +27,7 @@
 			<div class="col-sm-8">
 				<ul class="list-group">
 					<li class="list-group-item active quizma-font titulo-lista">
-						Preguntas
+						<?= __("Preguntas"); ?>
 					</li>
 
 					<?php
@@ -35,7 +35,7 @@
 						?>
 
 						<li class="list-group-item">
-							<span class="badge">Respuestas: <?= count($query["Comment"]); ?> </span>
+							<span class="badge"><?= __("Respuestas: "); ?><?= count($query["Comment"]); ?> </span>
 							<span class="title" ><a class="pregunta-link" href="view.html"><?= $this->Html->link($query['Query']['title'], array('controller' => 'queries', 'action' => 'view', $query['Query']['id'])) ?></a></span>
 							<br>
 							<div class="tags-y-puntuacion">
@@ -55,14 +55,6 @@
 					<div class="container-fluid row-centered">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8 ">
-							<!-- 
-								<li class="disabled"><a href="#">«</a></li>
-								<li class="active"><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">»</a></li>
-							-->
 							<ul class="pagination">
 								<?php 
 								if($this->Paginator->hasPrev()){
@@ -96,7 +88,7 @@
 			<div class="col-sm-4">
 				<ul class="list-group">
 					<li class="list-group-item active quizma-font titulo-lista">
-						Lo nuevo
+						<?= __("Lo nuevo"); ?>
 					</li>
 					<li class="list-group-item">
 						<?php
@@ -123,17 +115,17 @@
 									$preguntasSinRespuesta++;									
 								}
 							}
-						?>						
-						<span class="badge"><?= $preguntasRespondidas;?></span>
-						Preguntas respondidas hoy
+						?>
+						<span class="badge">14</span>
+						<?= __("Preguntas respondidas hoy"); ?>
 					</li>
 					<li class="list-group-item">
-						<span class="badge">falta</span>
-						Preguntas sin votar
+						<span class="badge">2</span>
+						<?= __("Preguntas sin votar"); ?>
 					</li>
 					<li class="list-group-item">
-						<span class="badge"><?= $preguntasSinRespuesta;?></span>
-						Preguntas sin respuesta
+						<span class="badge">1</span>
+						<?= __("Preguntas sin respuesta"); ?>
 					</li>
 				</ul>
 			</div>

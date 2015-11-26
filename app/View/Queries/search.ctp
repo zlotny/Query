@@ -2,18 +2,18 @@
 		 
 		<div class="container-fluid">
 			<div class="col-sm-8">
-				<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#pregunta">Publica tu Query!</a>
+				<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#pregunta"><?= __("Publica tu Query!"); ?></a>
 				<span class="pull-right">
 					<ul class="nav nav-pills">
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-								Filtro <span class="caret"></span>
+								<?= __("Filtro"); ?> <span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Últimas preguntas</a></li>
-								<li><a href="#">Más respondidas (30 días)</a></li>
+								<li><a href="#"><?= __("Últimas preguntas"); ?></a></li>
+								<li><a href="#"><?= __("Más respondidas (30 días)"); ?></a></li>
 								<li class="divider"></li>
-								<li class="disabled"><a href="#">Mis preguntas</a></li>
+								<li class="disabled"><a href="#"><?= __("Mis preguntas"); ?></a></li>
 							</ul>
 						</li>
 					</ul>
@@ -29,7 +29,7 @@
 			<div class="col-sm-8">
 				<ul class="list-group">
 					<li class="list-group-item active quizma-font titulo-lista">
-						Preguntas
+						<?= __("Preguntas"); ?>
 					</li>
 
 					<?php

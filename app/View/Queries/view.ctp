@@ -4,7 +4,7 @@
 	<h2 class="query-title"><?= $targetQuery["Query"]["title"]; ?></h2>
 	<div class="container-fluid row">
 		<div class="col-sm-12 col-xs-8">
-			<small class="creator">Creado por <?= $this->Html->link($author["username"], "/users/view/".$author["id"]);?> - <?= $targetQuery["Query"]["created"]; ?></small>
+			<small class="creator"><?= __("Creado por "); ?><?= $this->Html->link($author["username"], "/users/view/".$author["id"]);?> - <?= $targetQuery["Query"]["created"]; ?></small>
 		</div>
 		<div class="visible-xs col-xs-4">
 
@@ -206,7 +206,7 @@
 	if($this->Session->read("User.id")){
 		?>
 
-		<a class="btn btn-primary pull-right" href="#" data-toggle="modal" data-target="#responderQuery">Responder</a>
+		<a class="btn btn-primary pull-right" href="#" data-toggle="modal" data-target="#responderQuery"><?= __("Responder"); ?></a>
 
 		<?php
 	}
@@ -261,7 +261,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png" ></img>Responder</h4>
+						<h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png" ></img><?= __("Responder"); ?></h4>
 					</div>
 					<div class="modal-body">
 						<div class="container-fluid">

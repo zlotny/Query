@@ -58,6 +58,14 @@ public function add()
     }
 }
 
+public function lang($lang){
+    $this->Cookie->write('lang', $lang);
+    $this->redirect(array('controller' => 'queries', 'action' => 'index'));
+
+}
+
+
+
 public function voted($id_user, $id_query){
     $query = "SELECT id, vote FROM queries_users WHERE user_id='".$id_user."' AND query_id = '$id_query';"; 
 
@@ -73,5 +81,6 @@ public function voted($id_user, $id_query){
 
 
 }
+
 
 ?>

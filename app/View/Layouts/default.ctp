@@ -15,6 +15,7 @@
 
         <?= $this->Html->css('bootstrap') ?>
         <?= $this->Html->css('bootstrap-theme') ?>
+        <?= $this->Html->css('font-awesome') ?>
         <?= $this->Html->css('custom') ?>
 
     </head>
@@ -46,9 +47,8 @@
                         <div class="well well-lg">
                             <span class="pull-right close-button" onclick="closeAndRemember()">X</span>
                             <blockquote>
-                                <p>Query es una comunidad de preguntas y respuestas sobre el mundo de la tecnología de la información.
-                                    Regístrate para unirte a la comunidad y resolver de una vez por todas tus dudas!</p>
-                                    <small>El equipo de <cite class="quizma-font-bold" title="Query">Query</cite></small>
+                                <p><?= __("Query es una comunidad de preguntas y respuestas sobre el mundo de la tecnología de la información. Regístrate para unirte a la comunidad y resolver de una vez por todas tus dudas!"); ?></p>
+                                    <small><?= __("El equipo de "); ?><cite class="quizma-font-bold" title="Query"><?= __("Query"); ?></cite></small>
                                 </blockquote>
                             </div>
                         </div>
@@ -83,40 +83,39 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png"></img>No
-                                    estás identificado</h4>
+                                <h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png"></img><?= __("No estás identificado"); ?></h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="container-fluid">
                                         <div class="col-sm-6">
-                                            <h3>Identifícate...</h3><br>
+                                            <h3><?= __("Identifícate..."); ?></h3><br>
 
                                             <div class="form-group">
-                                                <input class="form-control" id="focusedInput" type="text" placeholder="Usuario">
+                                                <input class="form-control" id="focusedInput" type="text" placeholder='<?= __("Usuario"); ?>'>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control" id="focusedInput" type="password" placeholder="Contraseña">
+                                                <input class="form-control" id="focusedInput" type="password" placeholder='<?= __("Contraseña"); ?>'>
                                             </div>
                                             <div class="form-group pull-right">
-                                                <button type="button" class="btn btn-success">Login</button>
+                                                <button type="button" class="btn btn-success"><?= __("Login"); ?></button>
                                             </div>
 
                                         </div>
                                         <div class="col-sm-6">
-                                            <h3>O regístrate</h3><br>
+                                            <h3><?= __("O regístrate"); ?></h3><br>
 
                                             <div class="form-group">
-                                                <input class="form-control" id="focusedInput" type="text" placeholder="Usuario">
+                                                <input class="form-control" id="focusedInput" type="text" placeholder='<?= __("Usuario"); ?>'>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control" id="focusedInput" type="text" placeholder="Correo">
+                                                <input class="form-control" id="focusedInput" type="text" placeholder='<?= __("Correo"); ?>'>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control" id="focusedInput" type="password" placeholder="Contraseña">
+                                                <input class="form-control" id="focusedInput" type="password" placeholder='<?= __("Contraseña"); ?>'>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control" id="focusedInput" type="password"
-                                                placeholder="Repite tu contraseña">
+                                                placeholder='<?= __("Repite tu contraseña"); ?>'>
                                             </div>
                                             <div class="form-group pull-right">
                                                 <button type="button" class="btn btn-info">Regístrate</button>
@@ -127,31 +126,31 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <p class="eula">Registrándote en Query das a entender que aceptas nuestros términos de licencia de
-                                        usuario. Puedes consultarlos <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">aquí</a>
+                                    <p class="eula"><?= __("Registrándote en Query das a entender que aceptas nuestros términos de licencia de usuario. Puedes consultarlos"); ?> <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><?= __("aquí"); ?></a>
                                     </p>
                                 </div>
                             </div>
                             <?php
+                            
                         }else{
                             ?>
                             <!-- Modal content-->
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png"></img>Publica tu pregunta</h4>
+                                    <h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png"></img><?= __("Publica tu pregunta"); ?></h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="container-fluid">
                                         <div class="col-sm-12">
-                                            <h3>Introduce tu Query</h3><br>
+                                            <h3><?= __("Introduce tu Query"); ?></h3><br>
                                             <?= $this->Form->create('Query', array('action' => '/add')); ?>
                                             <div class="form-group">
-                                                <?= $this->Form->input("title", array("class" => "form-control", "placeholder" => "Título...", "id" => "focusedInput"));?>
+                                                <?= $this->Form->input("title", array("class" => "form-control", "placeholder" => __("Título..."), "id" => "focusedInput"));?>
                                                 <?= $this->Form->input("user_id", array("type" => "hidden", "value" => $this->Session->read("User.id")));?>
                                             </div>
                                             <div class="form-group">
-                                                <?= $this->Form->textarea("content", array("class" => "form-control", "placeholder" => "Tu Query...", "id" => "focusedInput"));?>
+                                                <?= $this->Form->textarea("content", array("class" => "form-control", "placeholder" => __("Tu Query..."), "id" => "focusedInput"));?>
                                             </div>
                                             <div class="form-group pull-right">
                                                 <?= $this->Form->submit('Publicar', array('class' => 'btn btn-info')); ?>
