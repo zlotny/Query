@@ -91,6 +91,31 @@
 						<?= __("Lo nuevo"); ?>
 					</li>
 					<li class="list-group-item">
+						<?php
+							//Preguntas respondidas 
+							$preguntasRespondidas=0;
+							$preguntasSinRespuesta=0;
+
+							foreach ($allQuerys as $key => $comment) {
+								
+								foreach ($comment["Comment"] as $key => $row) {
+									//echo strtotime($row["modified"]) === strtotime('today');
+									if( explode(" ", $row["modified"])[0] == date('Y-m-d')){								$preguntasRespondidas++;
+										break;
+									}
+								}
+							}
+
+							//Preguntas sin votar
+
+							//Preguntas sin respuesta
+							foreach ($allQuerys as $key => $comment) {
+								
+								if(empty($comment["Comment"])){
+									$preguntasSinRespuesta++;									
+								}
+							}
+						?>
 						<span class="badge">14</span>
 						<?= __("Preguntas respondidas hoy"); ?>
 					</li>

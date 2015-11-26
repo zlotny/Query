@@ -1,5 +1,5 @@
 
-		
+		 
 		<div class="container-fluid">
 			<div class="col-sm-8">
 				<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#pregunta"><?= __("Publica tu Query!"); ?></a>
@@ -33,19 +33,14 @@
 					</li>
 
 					<?php
-
-
 					foreach($querys as $query){
 						?>
 
 						<li class="list-group-item">
-							<span class="badge">Respuestas: --falta</span>
+							<span class="badge">Respuestas: <?= count($query["Comment"]); ?> </span>
 							<span class="title" ><a class="pregunta-link" href="view.html"><?= $this->Html->link($query['Query']['title'], array('controller' => 'queries', 'action' => 'view', $query['Query']['id'])) ?></a></span>
 							<br>
 							<div class="tags-y-puntuacion">
-								<span class="btn btn-primary btn-xs tag">MOVIDA</span>
-								<span class="btn btn-primary btn-xs tag">CAMBIAR</span>
-								<span class="btn btn-primary btn-xs tag">BASE DE DATOS</span>
 								<div class="progress progress-striped active puntuacion">
 									<div class="progress-bar progress-bar-success" style="width: 50%"><span class="count-votos">30 votos</span></div>
 									<div class="progress-bar progress-bar-danger" style="width: 50%"><span class="count-votos">30 votos</span></div>
@@ -106,24 +101,42 @@
 						Lo nuevo
 					</li>
 					<li class="list-group-item">
-						<span class="badge">14</span>
+						<?php
+							//Preguntas respondidas 
+							$preguntasRespondidas=0;
+							$preguntasSinRespuesta=0;
+
+							foreach ($allQuerys as $key => $comment) {
+								
+								foreach ($comment["Comment"] as $key => $row) {
+									//echo strtotime($row["modified"]) === strtotime('today');
+									if( explode(" ", $row["modified"])[0] == date('Y-m-d')){								$preguntasRespondidas++;
+										break;
+									}
+								}
+							}
+
+							//Preguntas sin votar
+
+							//Preguntas sin respuesta
+							foreach ($allQuerys as $key => $comment) {
+								
+								if(empty($comment["Comment"])){
+									$preguntasSinRespuesta++;									
+								}
+							}
+						?>						
+						<span class="badge"><?= $preguntasRespondidas;?></span>
 						Preguntas respondidas hoy
 					</li>
 					<li class="list-group-item">
-						<span class="badge">2</span>
+						<span class="badge">falta</span>
 						Preguntas sin votar
 					</li>
 					<li class="list-group-item">
-						<span class="badge">1</span>
+						<span class="badge"><?= $preguntasSinRespuesta;?></span>
 						Preguntas sin respuesta
 					</li>
 				</ul>
 			</div>
 		</div>
-
-
-
-
-
-
-		
