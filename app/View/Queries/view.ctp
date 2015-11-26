@@ -31,9 +31,6 @@
 		</div>
 	</div>
 	<hr class="query-separator">
-	<span class="btn btn-primary btn-xs tag">Existencial</span>
-	<span class="btn btn-primary btn-xs tag">Futuro</span>
-	<span class="btn btn-primary btn-xs tag">Insomnia</span>
 
 	<a class="btn btn-primary pull-right" href="#" data-toggle="modal" data-target="#responderQuery">Responder</a>
 
