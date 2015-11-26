@@ -208,35 +208,39 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png"></img>Publica tu pregunta</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container-fluid">
-                                        <div class="col-sm-12">
-                                            <h3>Introduce tu Query</h3><br>
-                                            
-                                            <div class="form-group">
-                                                <textarea class="form-control" id="focusedInput" placeholder="Tu query..."></textarea>
-                                            </div>
-                                            <div class="form-group pull-right">
-                                                <button type="button" class="btn btn-success">Publicar</button>
-                                            </div>
-
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="col-sm-12">
+                                        <h3>Introduce tu Query</h3><br>
+                                        <?= $this->Form->create('Query', array('action' => '/add')); ?>
+                                        <div class="form-group">
+                                        <?= $this->Form->input("title", array("class" => "form-control", "placeholder" => "Título...", "id" => "focusedInput"));?>
+                                        <?= $this->Form->input("user_id", array("type" => "hidden", "value" => $this->Session->read("User.id")));?>
                                         </div>
+                                        <div class="form-group">
+                                            <?= $this->Form->textarea("content", array("class" => "form-control", "placeholder" => "Tu Query...", "id" => "focusedInput"));?>
+                                        </div>
+                                        <div class="form-group pull-right">
+                                            <?= $this->Form->submit('Publicar', array('class' => 'btn btn-info')); ?>
+                                        </div>
+                                        <?= $this->Form->end(); ?>
                                     </div>
                                 </div>
                             </div>
-                            <?php
-                        }
-                        ?>
-                    </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
                 </div>
+            </div>
 
 
-                <?= $this->Html->script('jquery-1.11.3') ?>
-                <?= $this->Html->script('bootstrap') ?>
-                <?= $this->element('defaultScripts'); ?>
+            <?= $this->Html->script('jquery-1.11.3') ?>
+            <?= $this->Html->script('bootstrap') ?>
+            <?= $this->element('defaultScripts'); ?>
 
 
-            </body>
-            </html>
+        </body>
+        </html>
 
