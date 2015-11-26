@@ -1,15 +1,25 @@
 <?php
 class QueriesController extends AppController {
 	public $helpers = array('Html', 'Form');
-    public $components = array('Flash');
+    public $components = array('Flash', 'Paginator');
+
+    public $paginate = array(
+        'limit' => 10,
+        'order' => array(
+            'Queries.created' => 'desc'
+        )
+    );
 	
 
 	public function index() {
-		$this->set("querys", $this->Query->find("all"));
+		//$this->set("querys", $this->Query->find("all"));
+
+		$this->Paginator->settings = $this->paginate;
+		$data = $this->Paginator->paginate('Query');
+    	$this->set('querys', $data);
 	}
 
 	public function view($id = null) {
-		$this->layout = 'view';
 		if (!$id) {
 			throw new NotFoundException(__('Invalid query'));
 		}
