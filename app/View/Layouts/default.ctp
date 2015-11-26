@@ -46,8 +46,7 @@
                         <div class="well well-lg">
                             <span class="pull-right close-button" onclick="closeAndRemember()">X</span>
                             <blockquote>
-                                <p><?= __("Query es una comunidad de preguntas y respuestas sobre el mundo de la tecnología de la información.
-                                    Regístrate para unirte a la comunidad y resolver de una vez por todas tus dudas!"); ?></p>
+                                <p><?= __("Query es una comunidad de preguntas y respuestas sobre el mundo de la tecnología de la información. Regístrate para unirte a la comunidad y resolver de una vez por todas tus dudas!"); ?></p>
                                     <small><?= __("El equipo de "); ?><cite class="quizma-font-bold" title="Query"><?= __("Query"); ?></cite></small>
                                 </blockquote>
                             </div>
@@ -83,8 +82,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png"></img><?= __("No
-                                    estás identificado"); ?></h4>
+                                <h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png"></img><?= __("No estás identificado"); ?></h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="container-fluid">
@@ -127,8 +125,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <p class="eula"><?= __("Registrándote en Query das a entender que aceptas nuestros términos de licencia de
-                                        usuario. Puedes consultarlos"); ?> <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><?= __("aquí"); ?></a>
+                                    <p class="eula"><?= __("Registrándote en Query das a entender que aceptas nuestros términos de licencia de usuario. Puedes consultarlos"); ?> <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><?= __("aquí"); ?></a>
                                     </p>
                                 </div>
                             </div>

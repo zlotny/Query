@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Controller/QueriesController.php:22;28
+#: Controller/QueriesController.php:23;29
 msgid "Invalid query"
 msgstr ""
 
@@ -27,215 +27,215 @@ msgstr ""
 
 #: View/Elements/navbar.ctp:27
 msgid "Inicio"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:29
 msgid "Acerca de"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:33
 msgid "¿Cómo hago una pregunta?"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:34
 msgid "¿Cómo comentar una pregunta?"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:35
 msgid "¿Cómo funciona el sistema de votos?"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:46
 msgid "Buscar..."
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:68
 msgid "Desconectarse"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:72;92
 msgid "Registro"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:73
-#: View/Layouts/default.ctp:101
+#: View/Layouts/default.ctp:99
 msgid "Login"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:101
-#: View/Layouts/default.ctp:95;109
+#: View/Layouts/default.ctp:93;107
 msgid "Usuario"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:104;154
-#: View/Layouts/default.ctp:112
+#: View/Layouts/default.ctp:110
 msgid "Correo"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:107;158
-#: View/Layouts/default.ctp:98;115
+#: View/Layouts/default.ctp:96;113
 msgid "Contraseña"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:110
 msgid "Repita su contraseña"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:122
 msgid "Registrándote en Query das a entender que aceptas nuestros términos de licencia de usuario. Puedes consultarlos "
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:128
 msgid "Registrarse"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:147
 msgid "Identificación"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:151
-#: View/Layouts/default.ctp:92
+#: View/Layouts/default.ctp:90
 msgid "Identifícate..."
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:154
 msgid "Introduce tu email de usuario."
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:158
 msgid "Introduce tu contraseña."
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Elements/navbar.ctp:164
 msgid "Identificarse"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Layouts/default.ctp:49
-msgid "Query es una comunidad de preguntas y respuestas sobre el mundo de la tecnología de la información.\n                                    Regístrate para unirte a la comunidad y resolver de una vez por todas tus dudas!"
-msgstr ""
+msgid "Query es una comunidad de preguntas y respuestas sobre el mundo de la tecnología de la información. Regístrate para unirte a la comunidad y resolver de una vez por todas tus dudas!"
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
-#: View/Layouts/default.ctp:51
+#: View/Layouts/default.ctp:50
 msgid "El equipo de "
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
-#: View/Layouts/default.ctp:51
+#: View/Layouts/default.ctp:50
 msgid "Query"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
-#: View/Layouts/default.ctp:86
-msgid "No\n                                    estás identificado"
-msgstr ""
+#: View/Layouts/default.ctp:85
+msgid "No estás identificado"
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
-#: View/Layouts/default.ctp:106
+#: View/Layouts/default.ctp:104
 msgid "O regístrate"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
-#: View/Layouts/default.ctp:119
+#: View/Layouts/default.ctp:117
 msgid "Repite tu contraseña"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
-#: View/Layouts/default.ctp:130
-msgid "Registrándote en Query das a entender que aceptas nuestros términos de licencia de\n                                        usuario. Puedes consultarlos"
-msgstr ""
+#: View/Layouts/default.ctp:128
+msgid "Registrándote en Query das a entender que aceptas nuestros términos de licencia de usuario. Puedes consultarlos"
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
-#: View/Layouts/default.ctp:131
+#: View/Layouts/default.ctp:128
 msgid "aquí"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
-#: View/Layouts/default.ctp:143
+#: View/Layouts/default.ctp:140
 msgid "Publica tu pregunta"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
+
+#: View/Layouts/default.ctp:145
+msgid "Introduce tu Query"
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Layouts/default.ctp:148
-msgid "Introduce tu Query"
-msgstr ""
-
-#: View/Layouts/default.ctp:151
 msgid "Título..."
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
-#: View/Layouts/default.ctp:155
+#: View/Layouts/default.ctp:152
 msgid "Tu Query..."
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Queries/index.ctp:3
 #: View/Queries/search.ctp:5
 msgid "Publica tu Query!"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Queries/index.ctp:11
 #: View/Queries/search.ctp:13
 msgid "Últimas preguntas"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Queries/index.ctp:12
 #: View/Queries/search.ctp:14
 msgid "Más respondidas (30 días)"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Queries/index.ctp:14
 #: View/Queries/search.ctp:16
 msgid "Mis preguntas"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Queries/index.ctp:30
 #: View/Queries/search.ctp:32
 msgid "Preguntas"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Queries/index.ctp:38
 msgid "Respuestas: "
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Queries/index.ctp:91
 msgid "Lo nuevo"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
-#: View/Queries/index.ctp:95
+#: View/Queries/index.ctp:120
 msgid "Preguntas respondidas hoy"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
-#: View/Queries/index.ctp:99
+#: View/Queries/index.ctp:124
 msgid "Preguntas sin votar"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
-#: View/Queries/index.ctp:103
+#: View/Queries/index.ctp:128
 msgid "Preguntas sin respuesta"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Queries/search.ctp:10
 msgid "Filtro"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Queries/view.ctp:7
 msgid "Creado por "
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: View/Queries/view.ctp:39;94
 msgid "Responder"
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: Model/User.php:validation for field username
 msgid "El nombre de usuario debe estar entre 5 y 50 caracteres."
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: Model/User.php:validation for field username
 msgid "El nombre de usuario debe contener solamente caracteres alfanuméricos."
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: Model/User.php:validation for field username
 msgid "El nombre de usuario ya existe, elija otro."
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: Model/User.php:validation for field email
 msgid "Inserte un email valido."
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: Model/User.php:validation for field pass;validation for field pass2
 msgid "La longitud de la contraseña debe ser mayor que 6."
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
 #: Model/User.php:validation for field pass;validation for field pass2
 msgid "La contraseña no puede estar vacía."
-msgstr ""
+msgstr "ESTA TRADUCCION NO DEBERIA CARGARSE"
 
