@@ -41,15 +41,20 @@
 
             <div class="container-fluid intro-text">
                 <div class="col-sm-12">
-                    <div class="well well-lg">
-                        <span class="pull-right close-button" onclick="closeWell()">X</span>
-                        <blockquote>
-                            <p>Query es una comunidad de preguntas y respuestas sobre el mundo de la tecnología de la información.
-                                Regístrate para unirte a la comunidad y resolver de una vez por todas tus dudas!</p>
-                                <small>El equipo de <cite class="quizma-font-bold" title="Query">Query</cite></small>
-                            </blockquote>
+                    <?php if(!isset($_COOKIE["well"])){
+                        ?>
+                        <div class="well well-lg">
+                            <span class="pull-right close-button" onclick="closeAndRemember()">X</span>
+                            <blockquote>
+                                <p>Query es una comunidad de preguntas y respuestas sobre el mundo de la tecnología de la información.
+                                    Regístrate para unirte a la comunidad y resolver de una vez por todas tus dudas!</p>
+                                    <small>El equipo de <cite class="quizma-font-bold" title="Query">Query</cite></small>
+                                </blockquote>
+                            </div>
                         </div>
-                    </div>
+                        <?php
+                    }
+                    ?>
                 </div>
 
                 <br>
@@ -175,6 +180,7 @@
                                 <div class="container-fluid">
                                     <div class="col-sm-12">
                                         <h3>Danos tu solución:</h3><br>
+
                                         <div class="form-group">
                                             <textarea class="form-control" rows="8" id="textArea"></textarea>
                                         </div>
@@ -190,12 +196,10 @@
                     </div>
                 </div>
 
-
-                <?= $this->Html->script('jquery-1.11.3') ?>
-                <?= $this->Html->script('bootstrap') ?>
-                <?= $this->element('defaultScripts'); ?>
-
-
+            <?= $this->Html->script('jquery-1.11.3') ?>
+            <?= $this->Html->script('bootstrap') ?>
+            <?= $this->Html->script('main') ?>
+            <?= $this->element('defaultScripts'); ?>
             </body>
             </html>
 
