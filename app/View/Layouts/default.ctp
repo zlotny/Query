@@ -40,15 +40,20 @@
 
             <div class="container-fluid intro-text">
                 <div class="col-sm-12">
-                    <div class="well well-lg">
-                        <span class="pull-right close-button" onclick="closeWell()">X</span>
-                        <blockquote>
-                            <p>Query es una comunidad de preguntas y respuestas sobre el mundo de la tecnología de la información.
-                                Regístrate para unirte a la comunidad y resolver de una vez por todas tus dudas!</p>
-                                <small>El equipo de <cite class="quizma-font-bold" title="Query">Query</cite></small>
-                            </blockquote>
+                    <?php if(!isset($_COOKIE["well"])){
+                        ?>
+                        <div class="well well-lg">
+                            <span class="pull-right close-button" onclick="closeAndRemember()">X</span>
+                            <blockquote>
+                                <p>Query es una comunidad de preguntas y respuestas sobre el mundo de la tecnología de la información.
+                                    Regístrate para unirte a la comunidad y resolver de una vez por todas tus dudas!</p>
+                                    <small>El equipo de <cite class="quizma-font-bold" title="Query">Query</cite></small>
+                                </blockquote>
+                            </div>
                         </div>
-                    </div>
+                        <?php
+                    }
+                    ?>
                 </div>
 
                 <br>
@@ -215,8 +220,8 @@
                                         <h3>Introduce tu Query</h3><br>
                                         <?= $this->Form->create('Query', array('action' => '/add')); ?>
                                         <div class="form-group">
-                                        <?= $this->Form->input("title", array("class" => "form-control", "placeholder" => "Título...", "id" => "focusedInput"));?>
-                                        <?= $this->Form->input("user_id", array("type" => "hidden", "value" => $this->Session->read("User.id")));?>
+                                            <?= $this->Form->input("title", array("class" => "form-control", "placeholder" => "Título...", "id" => "focusedInput"));?>
+                                            <?= $this->Form->input("user_id", array("type" => "hidden", "value" => $this->Session->read("User.id")));?>
                                         </div>
                                         <div class="form-group">
                                             <?= $this->Form->textarea("content", array("class" => "form-control", "placeholder" => "Tu Query...", "id" => "focusedInput"));?>
@@ -238,6 +243,7 @@
 
             <?= $this->Html->script('jquery-1.11.3') ?>
             <?= $this->Html->script('bootstrap') ?>
+            <?= $this->Html->script('main') ?>
             <?= $this->element('defaultScripts'); ?>
 
 
