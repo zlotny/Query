@@ -31,9 +31,6 @@
 		</div>
 	</div>
 	<hr class="query-separator">
-	<span class="btn btn-primary btn-xs tag">Existencial</span>
-	<span class="btn btn-primary btn-xs tag">Futuro</span>
-	<span class="btn btn-primary btn-xs tag">Insomnia</span>
 
 	<?php
 	if($this->Session->read("User.id")){
