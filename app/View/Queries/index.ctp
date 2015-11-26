@@ -10,8 +10,16 @@
 							<ul class="dropdown-menu">
 
 								<li><?= $this->Paginator->sort('modified', __("Últimas preguntas"), array('direction' => 'desc', 'lock' => true)); ?></li>
-								<li class="divider"></li>
-								<li><?= $this->Html->link( __("Mis preguntas"), array('controller' => 'queries', 'action' => 'index?user_id='.$this->Session->read("User.id"))) ?></li>
+								
+								<?php
+								if($this->Session->read("User.id")){
+									?>
+									<li class="divider"></li>
+									<li><?= $this->Html->link( __("Mis preguntas"), array('controller' => 'queries', 'action' => 'index?user_id='.$this->Session->read("User.id"))) ?></li>
+									<?php
+								}		
+								?>
+
 							</ul>
 						</li>
 					</ul>
@@ -116,15 +124,15 @@
 							}
 						}
 						?>
-						<span class="badge">14</span>
+						<span class="badge"><?= $preguntasRespondidas; ?></span>
 						<?= __("Preguntas respondidas hoy"); ?>
 					</li>
 					<li class="list-group-item">
-						<span class="badge">2</span>
+						<span class="badge">falta</span>
 						<?= __("Preguntas sin votar"); ?>
 					</li>
 					<li class="list-group-item">
-						<span class="badge">1</span>
+						<span class="badge"><?= $preguntasSinRespuesta; ?></span>
 						<?= __("Preguntas sin respuesta"); ?>
 					</li>
 				</ul>
