@@ -1,63 +1,210 @@
-<?php
-/**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Layouts
- * @since         CakePHP(tm) v 0.10.0.1076
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
-
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
-$cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
-?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<?php echo $this->Html->charset(); ?>
-	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $this->fetch('title'); ?>
-	</title>
-	<?php
-		echo $this->Html->meta('icon');
+    <meta charset="utf-8">
+    <title>Query</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <?php
+    echo $this->Html->meta(
+        'favicon.ico',
+        '/favicon.ico',
+        array('type' => 'icon')
+    );
+    ?>
 
-		echo $this->Html->css('cake.generic');
+    <?= $this->Html->css('bootstrap') ?>
+    <?= $this->Html->css('bootstrap-theme') ?>
+    <?= $this->Html->css('custom') ?>
 
-		echo $this->fetch('meta');
-		echo $this->fetch('css');
-		echo $this->fetch('script');
-	?>
 </head>
 <body>
-	<div id="container">
-		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
-		</div>
-		<div id="content">
+<div id="main-body" class="container">
 
-			<?php echo $this->Flash->render(); ?>
+    <?= $this->element('navbar'); ?>
 
-			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false, 'id' => 'cake-powered')
-				);
-			?>
-			<p>
-				<?php echo $cakeVersion; ?>
-			</p>
-		</div>
-	</div>
-	<?php echo $this->element('sql_dump'); ?>
+
+    <div id="flash">
+        <?php echo $this->Flash->render(); ?>
+    </div>
+
+    
+
+
+<br/>
+
+<div class="container-fluid ">
+    <?php echo $this->Html->image('logo_dark_background.png', array('alt' => 'Logo', 'class' => 'logo', 'url' => array('controller' => 'queries', 'action' => 'index'))); ?>
+    </div>
+<br>
+
+<div class="container-fluid intro-text">
+    <div class="col-sm-12">
+        <div class="well well-lg">
+            <span class="pull-right close-button" onclick="closeWell()">X</span>
+            <blockquote>
+                <p>Query es una comunidad de preguntas y respuestas sobre el mundo de la tecnología de la información.
+                    Regístrate para unirte a la comunidad y resolver de una vez por todas tus dudas!</p>
+                <small>El equipo de <cite class="quizma-font-bold" title="Query">Query</cite></small>
+            </blockquote>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="container-fluid">
+    <div class="col-sm-8">
+        <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#preguntaNotLogged">Publica tu Query!</a>
+				<span class="pull-right">
+					<ul class="nav nav-pills">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                                Filtro <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Últimas preguntas</a></li>
+                                <li><a href="#">Más respondidas (30 días)</a></li>
+                                <li class="divider"></li>
+                                <li class="disabled"><a href="#">Mis preguntas</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+				</span>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+<br>
+
+
+<div id="question-body" class="container-fluid preguntas">
+
+    <div class="col-sm-8">
+        <ul class="list-group">
+            <li class="list-group-item active quizma-font titulo-lista">
+                Preguntas
+            </li>
+
+            <!-- PREGUNTAS view.ctp -->
+            <?= $this->fetch('content'); ?>
+
+
+            <div class="container-fluid row-centered">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8 ">
+                    <ul class="pagination">
+                        <li class="disabled"><a href="#">«</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">»</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2"></div>
+
+            </div>
+
+
+        </ul>
+    </div>
+    <div class="col-sm-4">
+        <ul class="list-group">
+            <li class="list-group-item active quizma-font titulo-lista">
+                Lo nuevo
+            </li>
+            <li class="list-group-item">
+                <span class="badge">14</span>
+                Preguntas respondidas hoy
+            </li>
+            <li class="list-group-item">
+                <span class="badge">2</span>
+                Preguntas sin votar
+            </li>
+            <li class="list-group-item">
+                <span class="badge">1</span>
+                Preguntas sin respuesta
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<?= $this->element('footer'); ?>
+
+
+</div>
+
+
+<!-- Modales -->
+
+
+<div id="preguntaNotLogged" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png"></img>No
+                    estás identificado</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="col-sm-6">
+                        <h3>Identifícate...</h3><br>
+
+                        <div class="form-group">
+                            <input class="form-control" id="focusedInput" type="text" placeholder="Usuario">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="focusedInput" type="password" placeholder="Contraseña">
+                        </div>
+                        <div class="form-group pull-right">
+                            <button type="button" class="btn btn-success">Login</button>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <h3>O regístrate</h3><br>
+
+                        <div class="form-group">
+                            <input class="form-control" id="focusedInput" type="text" placeholder="Usuario">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="focusedInput" type="text" placeholder="Correo">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="focusedInput" type="password" placeholder="Contraseña">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="focusedInput" type="password"
+                                   placeholder="Repite tu contraseña">
+                        </div>
+                        <div class="form-group pull-right">
+                            <button type="button" class="btn btn-info">Regístrate</button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="eula">Registrándote en Query das a entender que aceptas nuestros términos de licencia de
+                    usuario. Puedes consultarlos <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">aquí</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<?= $this->Html->script('jquery-1.11.3') ?>
+<?= $this->Html->script('bootstrap') ?>
+<?= $this->element('defaultScripts'); ?>
+
+
 </body>
 </html>
+
