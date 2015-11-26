@@ -30,6 +30,7 @@ class QueriesController extends AppController {
 		}
 		$this->set('targetQuery', $query[0]);
 		$this->set('author', $userQuery[0]["users"]);
+
 	}
 
 
@@ -38,19 +39,19 @@ class QueriesController extends AppController {
 		$datos = $this->request->query['searchInput'];	
 
 
-        $this->Paginator->settings = array(
-        	'limit' => 10,
-        	'order' => array(
-            	'Queries.created' => 'desc'),
-        	'conditions'=>array( 'OR' => array(
-            	array('Query.content LIKE'=>'%'.$datos.'%'),
-            	array('Query.title LIKE'=>'%'.$datos.'%'),)
-        	));
+		$this->Paginator->settings = array(
+			'limit' => 10,
+			'order' => array(
+				'Queries.created' => 'desc'),
+			'conditions'=>array( 'OR' => array(
+				array('Query.content LIKE'=>'%'.$datos.'%'),
+				array('Query.title LIKE'=>'%'.$datos.'%'),)
+			));
 		$data = $this->Paginator->paginate('Query');
 
-    	$this->set('querys', $data);
-    	$this->set('allQuerys', $this->Query->find('all'));
-    }
+		$this->set('querys', $data);
+		$this->set('allQuerys', $this->Query->find('all'));
+	}
 
 
 	public function add()
@@ -67,5 +68,51 @@ class QueriesController extends AppController {
 		}
 
 	}
+
+	public function vote($tipo, $id_query)
+	{
+		//GUARDAR RESULTADO DE VOTACION DE UNHA QUERY: $sql = "SELECT sum(vote) from queries_users where query_id = LOQUEZEA ";
+		if($tipo!="up" && $tipo !="down"){
+			$this->redirect(array('controller' => 'queries', 'action' => 'view', $id_query));
+		}
+		$voto = ($tipo=='up') ? 1 : -1 ;
+		$userId = $this->Session->read('User.id');
+		$query = "Insert into queries_users (vote, user_id, query_id) values ($voto, $userId ,$id_query)";
+
+
+		$this->Query->query($query);
+		$this->redirect(array('controller' => 'queries', 'action' => 'view', $id_query));
+
+		$sql = "SELECT sum(vote) from queries_users where query_id = $id_query";
+		$numVotos = $this->Query->query($sql);
+
+		$this->set('numVotos', $numVotos);
+
+		
+	}
+
+	public function updateVote($tipo, $id_query, $id_voto)
+	{
+		//GUARDAR RESULTADO DE VOTACION DE UNHA QUERY: $sql = "SELECT sum(vote) from queries_users where query_id = LOQUEZEA ";
+		if($tipo!="up" && $tipo !="down"){
+			$this->redirect(array('controller' => 'queries', 'action' => 'view', $id_query));
+		}
+		$voto = ($tipo=='up') ? 1 : -1 ;
+		$userId = $this->Session->read('User.id');
+		$query = "UPDATE queries_users SET vote = $voto WHERE id = $id_voto AND user_id = $userId AND query_id = $id_query";
+		echo $query;
+
+		$this->Query->query($query);
+		$this->redirect(array('controller' => 'queries', 'action' => 'view', $id_query));
+
+		$sql = "SELECT sum(vote) from queries_users where query_id = $id_query";
+		$numVotos = $this->Query->query($sql);
+		
+		$this->set('numVotos', $numVotos);
+
+		
+	}
+
+
 }
 ?>

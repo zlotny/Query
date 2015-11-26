@@ -57,6 +57,21 @@ public function add()
         $this->redirect(array('controller' => 'queries', 'action' => 'index'));
     }
 }
+
+public function voted($id_user, $id_query){
+    $query = "SELECT id, vote FROM queries_users WHERE user_id='".$id_user."' AND query_id = '$id_query';"; 
+
+    $result = $this->User->query($query);
+
+    $sql = "SELECT sum(vote) from queries_users where query_id = $id_query";
+    $numVotos = $this->User->query($sql);
+    $this->set('numVotos', $numVotos);
+    return $result;
+
+}
+
+
+
 }
 
 ?>
