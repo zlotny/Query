@@ -20,5 +20,15 @@ class QueriesController extends AppController {
 		$this->set('targetQuery', $query[0]);
 		$this->set('author', $userQuery[0]["users"]);
 	}
+
+	public function search(){
+		$datos=$this->request->data['Query']['searchInput'];
+		$this->set('datos', $this->request->data['Query']['searchInput']);
+		$this->set('querys', $this->Query->find('all', array('conditions'=>array( 'OR' => array(
+            array('Query.content LIKE'=>'%'.$datos.'%'),
+            array('Query.title LIKE'=>'%'.$datos.'%'),)
+        ))));
+
+	}
 }
 ?>
