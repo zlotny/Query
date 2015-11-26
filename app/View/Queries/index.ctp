@@ -1,6 +1,14 @@
 		<div class="container-fluid">
 			<div class="col-sm-8">
-				<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#pregunta"><?= __("Publica tu Query!"); ?></a>
+				<?php if($this->Session->read("User.id")){
+					?>
+					<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#pregunta"><?= __("Publica tu Query!"); ?></a>
+					<?php
+				}else{
+					?>
+					<a class="btn btn-primary" disabled href="#"><?= __("Publica tu Query!"); ?></a>
+					<?php
+				} ?>
 				<span class="pull-right">
 					<ul class="nav nav-pills">
 						<li class="dropdown">
@@ -10,7 +18,7 @@
 							<ul class="dropdown-menu">
 
 								<li><?= $this->Paginator->sort('modified', __("Últimas preguntas"), array('direction' => 'desc', 'lock' => true)); ?></li>
-								
+
 								<?php
 								if($this->Session->read("User.id")){
 									?>
@@ -74,7 +82,7 @@
 								}
 
 								echo $this->Paginator->numbers(array('tag'=>'li', 'separator'=>'', 'currentTag'=>'a', 'currentClass'=>'disabled')); 
-								
+
 								if($this->Paginator->hasNext()){
 									echo $this->Paginator->next('»', array('tag' => 'li'));
 								} else {
@@ -144,4 +152,3 @@
 
 
 
-		

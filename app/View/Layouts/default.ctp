@@ -48,130 +48,77 @@
                             <span class="pull-right close-button" onclick="closeAndRemember()">X</span>
                             <blockquote>
                                 <p><?= __("Query es una comunidad de preguntas y respuestas sobre el mundo de la tecnología de la información. Regístrate para unirte a la comunidad y resolver de una vez por todas tus dudas!"); ?></p>
-                                    <small><?= __("El equipo de "); ?><cite class="quizma-font-bold" title="Query"><?= __("Query"); ?></cite></small>
-                                </blockquote>
-                            </div>
+                                <small><?= __("El equipo de "); ?><cite class="quizma-font-bold" title="Query"><?= __("Query"); ?></cite></small>
+                            </blockquote>
                         </div>
-                        <?php
-                    }
-                    ?>
-                </div>
-
-                <br>
-
-                <!-- PREGUNTAS view.ctp -->
-                <?= $this->fetch('content'); ?>
-
-                <!-- Footer -->
-                <?= $this->element('footer'); ?>
-
-
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
 
+            <br>
 
-            <!-- Modales -->
+            <!-- PREGUNTAS view.ctp -->
+            <?= $this->fetch('content'); ?>
 
-
-            <div id="pregunta" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-
-                    <?php
-                    if(!$this->Session->read("User.id")){
-                        ?>
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png"></img><?= __("No estás identificado"); ?></h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container-fluid">
-                                        <div class="col-sm-6">
-                                            <h3><?= __("Identifícate..."); ?></h3><br>
-
-                                            <div class="form-group">
-                                                <input class="form-control" id="focusedInput" type="text" placeholder='<?= __("Usuario"); ?>'>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control" id="focusedInput" type="password" placeholder='<?= __("Contraseña"); ?>'>
-                                            </div>
-                                            <div class="form-group pull-right">
-                                                <button type="button" class="btn btn-success"><?= __("Login"); ?></button>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <h3><?= __("O regístrate"); ?></h3><br>
-
-                                            <div class="form-group">
-                                                <input class="form-control" id="focusedInput" type="text" placeholder='<?= __("Usuario"); ?>'>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control" id="focusedInput" type="text" placeholder='<?= __("Correo"); ?>'>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control" id="focusedInput" type="password" placeholder='<?= __("Contraseña"); ?>'>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control" id="focusedInput" type="password"
-                                                placeholder='<?= __("Repite tu contraseña"); ?>'>
-                                            </div>
-                                            <div class="form-group pull-right">
-                                                <button type="button" class="btn btn-info">Regístrate</button>
-                                            </div>
+            <!-- Footer -->
+            <?= $this->element('footer'); ?>
 
 
-                                        </div>
+        </div>
+
+
+        <!-- Modales -->
+
+
+        <div id="pregunta" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <?php
+                if(!$this->Session->read("User.id")){
+                        //Cant publish query    
+                }else{
+                    ?>
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png"></img><?= __("Publica tu pregunta"); ?></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="col-sm-12">
+                                    <h3><?= __("Introduce tu Query"); ?></h3><br>
+                                    <?= $this->Form->create('Query', array('action' => '/add')); ?>
+                                    <div class="form-group">
+                                        <?= $this->Form->input("title", array("class" => "form-control", "placeholder" => __("Título..."), "id" => "focusedInput"));?>
+                                        <?= $this->Form->input("user_id", array("type" => "hidden", "value" => $this->Session->read("User.id")));?>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <p class="eula"><?= __("Registrándote en Query das a entender que aceptas nuestros términos de licencia de usuario. Puedes consultarlos"); ?> <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><?= __("aquí"); ?></a>
-                                    </p>
+                                    <div class="form-group">
+                                        <?= $this->Form->textarea("content", array("class" => "form-control", "placeholder" => __("Tu Query..."), "id" => "focusedInput"));?>
+                                    </div>
+                                    <div class="form-group pull-right">
+                                        <?= $this->Form->submit('Publicar', array('class' => 'btn btn-info')); ?>
+                                    </div>
+                                    <?= $this->Form->end(); ?>
                                 </div>
                             </div>
-                            <?php
-                            
-                        }else{
-                            ?>
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png"></img><?= __("Publica tu pregunta"); ?></h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container-fluid">
-                                        <div class="col-sm-12">
-                                            <h3><?= __("Introduce tu Query"); ?></h3><br>
-                                            <?= $this->Form->create('Query', array('action' => '/add')); ?>
-                                            <div class="form-group">
-                                                <?= $this->Form->input("title", array("class" => "form-control", "placeholder" => __("Título..."), "id" => "focusedInput"));?>
-                                                <?= $this->Form->input("user_id", array("type" => "hidden", "value" => $this->Session->read("User.id")));?>
-                                            </div>
-                                            <div class="form-group">
-                                                <?= $this->Form->textarea("content", array("class" => "form-control", "placeholder" => __("Tu Query..."), "id" => "focusedInput"));?>
-                                            </div>
-                                            <div class="form-group pull-right">
-                                                <?= $this->Form->submit('Publicar', array('class' => 'btn btn-info')); ?>
-                                            </div>
-                                            <?= $this->Form->end(); ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                        }
-                        ?>
+                        </div>
                     </div>
-                </div>
+                    <?php
+                }
+                ?>
+            </div>
+        </div>
 
-                
+        
 
-                <?= $this->Html->script('jquery-1.11.3') ?>
-                <?= $this->Html->script('bootstrap') ?>
-                <?= $this->Html->script('main') ?>
-                <?= $this->element('defaultScripts'); ?>
-            </body>
-            </html>
+        <?= $this->Html->script('jquery-1.11.3') ?>
+        <?= $this->Html->script('bootstrap') ?>
+        <?= $this->Html->script('validator.min') ?>
+        <?= $this->Html->script('main') ?>
+        <?= $this->element('defaultScripts'); ?>
+    </body>
+    </html>
 

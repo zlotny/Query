@@ -24,6 +24,7 @@ class User extends AppModel
             ),
     );
 
+/* Validation not working. Known bug, seen in class!!! not neccessary in server side as lipido stated.
     public $validate = array(
         'username' => array(
             'between' => array(
@@ -70,7 +71,7 @@ class User extends AppModel
             )
         )
     );
-
+*/
 
 }
 
