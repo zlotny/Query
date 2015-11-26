@@ -50,7 +50,7 @@ public function add()
             if ($this->User->save($this->request->data)) {
                 $this->Flash->success("Usuario creado satisfactoriamente.");
             } else {
-                $this->Flash->success("Error al registrar usuario.");
+                $this->Flash->error("Error al registrar usuario.");
             }
         } else {
             $this->Flash->error("Las contraseñas son distintas.");

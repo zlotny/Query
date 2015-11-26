@@ -99,7 +99,6 @@
 				<div class="modal-body">
 					<div class="container-fluid">
 						<h3>Regístrate en Query!</h3><br>
-
 						<div class="col-sm-12">
 							<div class="form-group registro-form">
 								<?= $this->Form->input('username', array('label' => false, 'class' => 'form-control setPopover', 'id' => 'focusedInput', 'placeholder' => 'Usuario', 'data-toggle' => 'popover', 'data-placement' => 'right', 'data-content' => 'Introduce tu nombre de usuario.', 'data-trigger' => 'active', 'aria-describedby' => 'popover906376')) ?>
