@@ -34,17 +34,34 @@
 						</ul>
 					</li>
 				</ul>
-				<form class="navbar-form navbar-left">
+				
+				<?php 
+				echo $this->Form->create('Query', array('action'=> '/search', 'type' => 'post', 'class' => 'navbar-form navbar-left'));
+				?>
 					<div class="form-group">
 						<div id="search-field" class="input-group">
-
-							<input type="text" placeholder="Buscar..." class="form-control">
-							<span class="input-group-btn">
+						
+						
+    					<!--<input type="text" placeholder="Buscar..." class="form-control">-->
+    					<?php
+    					echo $this->Form->input('searchInput', array( 'class'=>'form-control', 'placeholder'=> 'Buscar...', 'div' => false,'type' =>'text', 'label' => false));
+    					echo '<span class="input-group-btn">';
+    					echo $this->Form->button( "<span class='glyphicon glyphicon-search'></span>", array('type' => 'submit',
+    						'label' => false,
+    						'class' => 'btn btn-default',
+    						'escape' => false));
+    					echo '</span>'
+    					?>
+    						<!--<span class="input-group-btn">
 								<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-							</span>
+							</span>-->
+    						
 						</div>
 					</div>
-				</form>
+				<?php
+    			echo $this->Form->end();
+				?>
+
 				<ul class="nav navbar-nav navbar-right">
 					<?php
 					if($this->Session->read("User.email")){
