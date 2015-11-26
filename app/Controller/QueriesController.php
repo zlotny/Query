@@ -35,12 +35,21 @@ class QueriesController extends AppController {
 
 
 	public function search(){
-		$datos=$this->request->data['Query']['searchInput'];
-		$this->set('datos', $this->request->data['Query']['searchInput']);
-		$this->set('querys', $this->Query->find('all', array('conditions'=>array( 'OR' => array(
-            array('Query.content LIKE'=>'%'.$datos.'%'),
-            array('Query.title LIKE'=>'%'.$datos.'%'),)
-        ))));
+		
+		$datos=$this->request->query['searchInput'];	
+
+
+        $this->Paginator->settings = array(
+        	'limit' => 10,
+        	'order' => array(
+            	'Queries.created' => 'desc'),
+        	'conditions'=>array( 'OR' => array(
+            	array('Query.content LIKE'=>'%'.$datos.'%'),
+            	array('Query.title LIKE'=>'%'.$datos.'%'),)
+        	));
+		$data = $this->Paginator->paginate('Query');
+
+    	$this->set('querys', $data);
     }
 
 
