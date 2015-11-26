@@ -8,10 +8,10 @@
 								Filtro <span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><?= __("Últimas preguntas"); ?></a></li>
-								<li><a href="#"><?= __("Más respondidas (30 días)"); ?></a></li>
+
+								<li><?= $this->Paginator->sort('modified', __("Últimas preguntas"), array('direction' => 'desc', 'lock' => true)); ?></li>
 								<li class="divider"></li>
-								<li class="disabled"><a href="#"><?= __("Mis preguntas"); ?></a></li>
+								<li><?= $this->Html->link( __("Mis preguntas"), array('controller' => 'queries', 'action' => 'index?user_id='.$this->Session->read("User.id"))) ?></li>
 							</ul>
 						</li>
 					</ul>
@@ -93,28 +93,28 @@
 					<li class="list-group-item">
 						<?php
 							//Preguntas respondidas 
-							$preguntasRespondidas=0;
-							$preguntasSinRespuesta=0;
+						$preguntasRespondidas=0;
+						$preguntasSinRespuesta=0;
 
-							foreach ($allQuerys as $key => $comment) {
-								
-								foreach ($comment["Comment"] as $key => $row) {
+						foreach ($allQuerys as $key => $comment) {
+
+							foreach ($comment["Comment"] as $key => $row) {
 									//echo strtotime($row["modified"]) === strtotime('today');
-									if( explode(" ", $row["modified"])[0] == date('Y-m-d')){								$preguntasRespondidas++;
-										break;
-									}
+								if( explode(" ", $row["modified"])[0] == date('Y-m-d')){								$preguntasRespondidas++;
+									break;
 								}
 							}
+						}
 
 							//Preguntas sin votar
 
 							//Preguntas sin respuesta
-							foreach ($allQuerys as $key => $comment) {
-								
-								if(empty($comment["Comment"])){
-									$preguntasSinRespuesta++;									
-								}
+						foreach ($allQuerys as $key => $comment) {
+
+							if(empty($comment["Comment"])){
+								$preguntasSinRespuesta++;									
 							}
+						}
 						?>
 						<span class="badge">14</span>
 						<?= __("Preguntas respondidas hoy"); ?>

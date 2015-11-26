@@ -3,7 +3,7 @@
 class UsersController extends AppController
 {
     public $helpers = array('Html', 'Form', 'Flash');
-    public $components = array('Flash');
+    public $components = array('Flash', 'Session');
 
     public function index()
     {

@@ -13,7 +13,12 @@ class QueriesController extends AppController {
 
 	public function index() {
 		$this->Paginator->settings = $this->paginate;
-		$queries = $this->Paginator->paginate('Query');
+		if(isset($this->request->query["user_id"])){
+			$queries = $this->Paginator->paginate('Query', array('Query.user_id LIKE' => $this->request->query["user_id"]));
+		}else{
+			$queries = $this->Paginator->paginate('Query');
+		}
+
 		$this->set('querys', $queries);
 		$this->set('allQuerys', $this->Query->find('all'));
 	}
@@ -38,19 +43,19 @@ class QueriesController extends AppController {
 		$datos = $this->request->query['searchInput'];	
 
 
-        $this->Paginator->settings = array(
-        	'limit' => 10,
-        	'order' => array(
-            	'Queries.created' => 'desc'),
-        	'conditions'=>array( 'OR' => array(
-            	array('Query.content LIKE'=>'%'.$datos.'%'),
-            	array('Query.title LIKE'=>'%'.$datos.'%'),)
-        	));
+		$this->Paginator->settings = array(
+			'limit' => 10,
+			'order' => array(
+				'Queries.created' => 'desc'),
+			'conditions'=>array( 'OR' => array(
+				array('Query.content LIKE'=>'%'.$datos.'%'),
+				array('Query.title LIKE'=>'%'.$datos.'%'),)
+			));
 		$data = $this->Paginator->paginate('Query');
 
-    	$this->set('querys', $data);
-    	$this->set('allQuerys', $this->Query->find('all'));
-    }
+		$this->set('querys', $data);
+		$this->set('allQuerys', $this->Query->find('all'));
+	}
 
 
 	public function add()
