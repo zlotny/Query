@@ -15,6 +15,7 @@
 
         <?= $this->Html->css('bootstrap') ?>
         <?= $this->Html->css('bootstrap-theme') ?>
+        <?= $this->Html->css('font-awesome') ?>
         <?= $this->Html->css('custom') ?>
 
     </head>
