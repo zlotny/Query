@@ -1,7 +1,5 @@
-
-
-
 		<?php
+
 		foreach($querys as $query){
 			?>
 

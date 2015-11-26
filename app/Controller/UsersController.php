@@ -47,10 +47,12 @@ public function add()
 {
     if ($this->request->is('post')) {
         if ($this->request->data['User']['pass'] == $this->request->data['User']['pass2']) {
+            print_r($this->request->data);
             if ($this->User->save($this->request->data)) {
                 $this->Flash->success("Usuario creado satisfactoriamente.");
             } else {
-                $this->Flash->success("Error al registrar usuario.");
+                print_r($this->User->validationErrors); die();
+                $this->Flash->error("Error al registrar usuario.");
             }
         } else {
             $this->Flash->error("Las contraseñas son distintas.");
