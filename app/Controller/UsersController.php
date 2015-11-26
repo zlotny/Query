@@ -12,7 +12,6 @@ class UsersController extends AppController
 
     public function view($id)
     {
-        $this->layout = 'view';
         if (!$id) {
             throw new NotFoundException(__('Invalid user'));
         }
