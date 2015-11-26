@@ -181,7 +181,7 @@
 						'width' => '30'
 						));
 				echo '</br>';
-				echo '<span class="vote-count"> cambiar </span>';
+				echo '<span class="vote-count"> cambiar </span></br>';
 				echo $this->Html->image('arrow_down_white.png', array(
 						'alt' => 'Arrow Down',
 						'height' => '30', 
