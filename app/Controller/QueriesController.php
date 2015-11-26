@@ -15,6 +15,7 @@ class QueriesController extends AppController {
 		$this->Paginator->settings = $this->paginate;
 		$queries = $this->Paginator->paginate('Query');
 		$this->set('querys', $queries);
+		$this->set('allQuerys', $this->Query->find('all'));
 	}
 
 	public function view($id = null) {
@@ -34,7 +35,7 @@ class QueriesController extends AppController {
 
 	public function search(){
 		
-		$datos=$this->request->query['searchInput'];	
+		$datos = $this->request->query['searchInput'];	
 
 
         $this->Paginator->settings = array(
@@ -48,6 +49,7 @@ class QueriesController extends AppController {
 		$data = $this->Paginator->paginate('Query');
 
     	$this->set('querys', $data);
+    	$this->set('allQuerys', $this->Query->find('all'));
     }
 
 
