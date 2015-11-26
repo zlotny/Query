@@ -23,7 +23,9 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="index.html">Inicio<span class="sr-only">(current)</span></a></li>
+					<li class="active">
+					<?= $this->Html->link("Inicio", "/" ); ?>
+					</li>
 					<li><a href="about.html">Acerca de</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tour<span class="caret"></span></a>
