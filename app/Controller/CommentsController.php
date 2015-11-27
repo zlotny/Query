@@ -1,4 +1,4 @@
-<?php
+<?php 
 class CommentsController extends AppController {
 	public $components = array('Flash');
 
@@ -20,5 +20,38 @@ class CommentsController extends AppController {
 		}
 
 	}
+
+	public function voteComment($tipo, $id_comment, $userId, $id_query)
+	{
+		//GUARDAR RESULTADO DE VOTACION DE UNHA QUERY: $sql = "SELECT sum(vote) from queries_users where query_id = LOQUEZEA ";
+		if($tipo!="up" && $tipo !="down"){
+			$this->redirect(array('controller' => 'queries', 'action' => 'view', $id_query));
+		}
+		$voto = ($tipo=='up') ? 1 : -1 ;
+		//$userId = $this->Session->read('User.id');
+		$query = "Insert into comments_users (vote, user_id, comment_id) values ($voto, $userId , $id_comment)";
+
+
+		$this->Comment->query($query);
+		$this->redirect(array('controller' => 'queries', 'action' => 'view', $id_query));
+		
+	}
+
+	public function updateVoteComment($tipo, $id_comment, $id_voto, $userId, $id_query)
+	{
+		//GUARDAR RESULTADO DE VOTACION DE UNHA QUERY: $sql = "SELECT sum(vote) from queries_users where query_id = LOQUEZEA ";
+		if($tipo!="up" && $tipo !="down"){
+			$this->redirect(array('controller' => 'queries', 'action' => 'view', $id_query));
+		}
+		$voto = ($tipo=='up') ? 1 : -1 ;
+		//$userId = $this->Session->read('User.id');
+		$query = "UPDATE comments_users SET vote = $voto WHERE id = $id_voto AND user_id = $userId AND comment_id = $id_comment";
+
+
+		$this->Comment->query($query);
+		$this->redirect(array('controller' => 'queries', 'action' => 'view', $id_query));
+		
+	}
+
 }
 ?>

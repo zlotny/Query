@@ -71,9 +71,15 @@ public function voted($id_user, $id_query){
 
     $result = $this->User->query($query);
 
-    $sql = "SELECT sum(vote) from queries_users where query_id = $id_query";
-    $numVotos = $this->User->query($sql);
-    $this->set('numVotos', $numVotos);
+    return $result;
+
+}
+
+public function votedComment($id_user, $id_comment){
+    $query = "SELECT id, vote FROM comments_users WHERE user_id='$id_user' AND comment_id = '$id_comment';"; 
+
+    $result = $this->User->query($query);
+
     return $result;
 
 }
