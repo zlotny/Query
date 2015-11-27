@@ -130,7 +130,7 @@
 						Preguntas respondidas hoy
 					</li>
 					<li class="list-group-item">
-						<span class="badge">falta</span>
+						<span class="badge"><?= $queriesNoVotes?></span>
 						Preguntas sin votar
 					</li>
 					<li class="list-group-item">

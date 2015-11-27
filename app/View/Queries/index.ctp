@@ -108,35 +108,34 @@
 					</li>
 					<li class="list-group-item">
 						<?php
-							//Preguntas respondidas 
+						//Preguntas respondidas y Preguntas sin respuesta
 						$preguntasRespondidas=0;
 						$preguntasSinRespuesta=0;
 
 						foreach ($allQuerys as $key => $comment) {
-
-							foreach ($comment["Comment"] as $key => $row) {
+							if(empty($comment["Comment"])){
+								$preguntasSinRespuesta++;									
+							}else{
+								foreach ($comment["Comment"] as $key => $row) {
 									//echo strtotime($row["modified"]) === strtotime('today');
-								if( explode(" ", $row["modified"])[0] == date('Y-m-d')){								$preguntasRespondidas++;
-									break;
+									if( explode(" ", $row["modified"])[0] == date('Y-m-d')){								$preguntasRespondidas++;
+										break;
+									}
 								}
 							}
 						}
 
-							//Preguntas sin votar
 
-							//Preguntas sin respuesta
-						foreach ($allQuerys as $key => $comment) {
+						//Preguntas sin votar
 
-							if(empty($comment["Comment"])){
-								$preguntasSinRespuesta++;									
-							}
-						}
+
+						
 						?>
 						<span class="badge"><?= $preguntasRespondidas; ?></span>
 						<?= __("Preguntas respondidas hoy"); ?>
 					</li>
 					<li class="list-group-item">
-						<span class="badge">falta</span>
+						<span class="badge"><?= $queriesNoVotes ?></span>
 						<?= __("Preguntas sin votar"); ?>
 					</li>
 					<li class="list-group-item">

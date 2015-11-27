@@ -20,7 +20,14 @@ class QueriesController extends AppController {
 		}
 
 		$this->set('querys', $queries);
+		$allQuerys = $this->Query->find('all');
 		$this->set('allQuerys', $this->Query->find('all'));
+		$numAllQuerys = sizeof($allQuerys);
+		$sql = "SELECT query_id FROM queries_users GROUP BY query_id";
+		$votedQueries = $this->Query->query($sql);
+		$numVotedQueries = sizeof($votedQueries);
+		$this->set('queriesNoVotes', $numAllQuerys-$numVotedQueries);
+
 	}
 
 	public function view($id = null) {
@@ -61,7 +68,13 @@ class QueriesController extends AppController {
 		$data = $this->Paginator->paginate('Query');
 
 		$this->set('querys', $data);
+		$allQuerys = $this->Query->find('all');
 		$this->set('allQuerys', $this->Query->find('all'));
+		$numAllQuerys = sizeof($allQuerys);
+		$sql = "SELECT query_id FROM queries_users GROUP BY query_id";
+		$votedQueries = $this->Query->query($sql);
+		$numVotedQueries = sizeof($votedQueries);
+		$this->set('queriesNoVotes', $numAllQuerys-$numVotedQueries);
 	}
 
 
