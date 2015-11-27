@@ -117,6 +117,7 @@
         <?= $this->Html->script('jquery-1.11.3') ?>
         <?= $this->Html->script('bootstrap') ?>
         <?= $this->Html->script('validator.min') ?>
+        <?= $this->Html->script('boobles') ?>
         <?= $this->Html->script('main') ?>
         <?= $this->element('defaultScripts'); ?>
     </body>
