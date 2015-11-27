@@ -238,7 +238,7 @@
 				</div>
 				<div class="col-sm-9 col-xs-12 bubble"><?= $comment['content']; ?>
 				</div>
-				<div class="col-sm-2 col-xs-3 restriccion"><?php echo $this->Html->image('cambiarme.png', array('alt' => 'Avatar')); ?>
+				<div class="col-sm-2 col-xs-3 restriccion"><?php echo $this->Html->image("user-icons/".$comment['User']['profile_pic_route'], array('alt' => 'Avatar', "class" => "comment-profile-img", "height" => "80")); ?>
 					<br>
 
 					<p class=" query-response-user-name"><?= $this->Html->link($comment['User']['username'], "/users/view/".$comment['User']['id']);?></p>
