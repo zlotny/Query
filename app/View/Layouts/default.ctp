@@ -40,7 +40,7 @@
             </div>
             <br>
 
-            <div class="container-fluid intro-text">
+            <div class="container-fluid">
                 <div class="col-sm-12">
                     <?php if(!isset($_COOKIE["well"])){
                         ?>

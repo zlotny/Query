@@ -26,15 +26,6 @@
 					<li class="active">
 						<?= $this->Html->link(__("Inicio"), "/" ); ?>
 					</li>
-					<li><a href="about.html"><?= __("Acerca de"); ?></a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tour<span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="./tour_pregunta.html"><?= __("¿Cómo hago una pregunta?"); ?></a></li>
-							<li><a href="./tour_comentar.html"><?= __("¿Cómo comentar una pregunta?"); ?></a></li>
-							<li><a href="./tour_votos.html"><?= __("¿Cómo funciona el sistema de votos?"); ?></a></li>
-						</ul>
-					</li>
 				</ul>
 				
 				<?php 
