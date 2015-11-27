@@ -31,7 +31,7 @@
 						'alt' => 'Arrow Up',
 						'height' => '15', 
 						'width' => '15',
-						'url' => array('controller' => 'queries', 'action' => 'updateVote', 'up',$targetQuery["Query"]["id"],$id_voto)
+						'url' => array('controller' => 'queries', 'action' => 'updateVote', 'up',$targetQuery["Query"]["id"], $id_voto, $id_user)
 						));				
 				}
 				if(empty($voted)){
@@ -40,11 +40,11 @@
 						'alt' => 'Arrow Up',
 						'height' => '15', 
 						'width' => '15',
-						'url' => array('controller' => 'queries', 'action' => 'vote', 'up',$targetQuery["Query"]["id"])
+						'url' => array('controller' => 'queries', 'action' => 'vote', 'up',$targetQuery["Query"]["id"], $id_user)
 						));	
 				}
 				//<img src="./img/arrow_up_white.png" alt="Arrow Up" height="15" width="15">-->
-				if(!empty($numVotos)) echo '<span class="vote-count">'.$numVotos.'</span>';
+				if(!empty($numVotos)) echo '<span class="vote-count"> '.$numVotos.' </span>';
 				else echo '<span class="vote-count"> 0 </span>';
 				
 				if($voted && $voted[0]["queries_users"]["vote"]==1){
@@ -53,7 +53,7 @@
 						'alt' => 'Arrow Down',
 						'height' => '15', 
 						'width' => '15',
-						'url' => array('controller' => 'queries', 'action' => 'updateVote', 'down',$targetQuery["Query"]["id"], $id_voto)
+						'url' => array('controller' => 'queries', 'action' => 'updateVote', 'down',$targetQuery["Query"]["id"], $id_voto, $id_user)
 						));
 				}
 				if($voted && $voted[0]["queries_users"]["vote"]==-1){
@@ -69,7 +69,7 @@
 						'alt' => 'Arrow Down',
 						'height' => '15', 
 						'width' => '15',
-						'url' => array('controller' => 'queries', 'action' => 'vote', 'down',$targetQuery["Query"]["id"])
+						'url' => array('controller' => 'queries', 'action' => 'vote', 'down',$targetQuery["Query"]["id"], $id_user)
 						));	
 				}
 				
@@ -81,7 +81,8 @@
 					'height' => '15', 
 					'width' => '15'
 					));
-				echo '<span class="vote-count"> cambiar </span>';
+				if(!empty($numVotos)) echo '<span class="vote-count"> '.$numVotos.' </span>';
+				else echo '<span class="vote-count"> 0 </span>';
 				echo $this->Html->image('arrow_down_white.png', array(
 					'alt' => 'Arrow Down',
 					'height' => '15', 
@@ -123,7 +124,7 @@
 							'alt' => 'Arrow Up',
 							'height' => '30', 
 							'width' => '30',
-							'url' => array('controller' => 'queries', 'action' => 'updateVote', 'up',$targetQuery["Query"]["id"],$id_voto)
+							'url' => array('controller' => 'queries', 'action' => 'updateVote', 'up',$targetQuery["Query"]["id"],$id_voto, $id_user)
 							));
 						echo '</br>';				
 					}
@@ -133,13 +134,12 @@
 							'alt' => 'Arrow Up',
 							'height' => '30', 
 							'width' => '30',
-							'url' => array('controller' => 'queries', 'action' => 'vote', 'up',$targetQuery["Query"]["id"])
+							'url' => array('controller' => 'queries', 'action' => 'vote', 'up',$targetQuery["Query"]["id"], $id_user)
 							));
 						echo '</br>';	
 					}
 				//<img src="./img/arrow_up_white.png" alt="Arrow Up" height="30" width="30">-->
-
-					if(!empty($numVotos))echo '<span class="vote-count">'.$numVotos.'</span>';
+					if(!empty($numVotos)) echo '<span class="vote-count">'.$numVotos.'</span>';
 					else echo '<span class="vote-count"> 0 </span>';
 					echo '</br>';
 					
@@ -149,7 +149,7 @@
 							'alt' => 'Arrow Down',
 							'height' => '30', 
 							'width' => '30',
-							'url' => array('controller' => 'queries', 'action' => 'updateVote', 'down',$targetQuery["Query"]["id"], $id_voto)
+							'url' => array('controller' => 'queries', 'action' => 'updateVote', 'down',$targetQuery["Query"]["id"], $id_voto, $id_user)
 							));
 						echo '</br>';
 					}
@@ -167,7 +167,7 @@
 							'alt' => 'Arrow Down',
 							'height' => '30', 
 							'width' => '30',
-							'url' => array('controller' => 'queries', 'action' => 'vote', 'down',$targetQuery["Query"]["id"])
+							'url' => array('controller' => 'queries', 'action' => 'vote', 'down',$targetQuery["Query"]["id"]), $id_user
 							));
 						echo '</br>';	
 					}
@@ -181,7 +181,8 @@
 						'width' => '30'
 						));
 					echo '</br>';
-					echo '<span class="vote-count"> cambiar </span></br>';
+					if(!empty($numVotos)) echo '<span class="vote-count">'.$numVotos.'</span></br>';
+					else echo '<span class="vote-count"> 0 </span></br>';
 					echo $this->Html->image('arrow_down_white.png', array(
 						'alt' => 'Arrow Down',
 						'height' => '30', 
