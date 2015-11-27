@@ -46,6 +46,23 @@ public function add()
 {
     if ($this->request->is('post')) {
         if ($this->request->data['User']['pass'] == $this->request->data['User']['pass2']) {
+
+            /* Prepare image to be uploaded */
+            //Check if image has been uploaded
+            if (!empty($this->request->data['User']['file']['name'])) {
+                $file = $this->request->data['User']['file'];
+
+                $ext = substr(strtolower(strrchr($file['name'], '.')), 1);
+                $arr_ext = array('jpg', 'jpeg', 'gif','png');
+
+                if (in_array(strtolower($ext), $arr_ext)) {
+                    move_uploaded_file($file['tmp_name'], WWW_ROOT . 'img/user-icons/' . $file['name']);
+                //prepare the filename for database entry
+                    $this->request->data['User']['profile_pic_route'] = $file['name'];
+                }
+            }            
+
+
             if ($this->User->save($this->request->data)) {
                 $this->Flash->success("Usuario creado satisfactoriamente.");
             } else {

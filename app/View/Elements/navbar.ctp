@@ -26,15 +26,6 @@
 					<li class="active">
 						<?= $this->Html->link(__("Inicio"), "/" ); ?>
 					</li>
-					<li><a href="about.html"><?= __("Acerca de"); ?></a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tour<span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="./tour_pregunta.html"><?= __("¿Cómo hago una pregunta?"); ?></a></li>
-							<li><a href="./tour_comentar.html"><?= __("¿Cómo comentar una pregunta?"); ?></a></li>
-							<li><a href="./tour_votos.html"><?= __("¿Cómo funciona el sistema de votos?"); ?></a></li>
-						</ul>
-					</li>
 				</ul>
 				
 				<?php 
@@ -115,7 +106,7 @@
 			<div class="modal-dialog">
 
 				<!-- Modal content-->
-				<?= $this->Form->create('User', array('action' => '/add', "data-toggle" => "validator")); ?>
+				<?= $this->Form->create('User', array('action' => '/add', "data-toggle" => "validator", 'enctype'=>'multipart/form-data')); ?>
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -134,6 +125,9 @@
 								<div class="form-group registro-form">
 									<?= $this->Form->input('email', array('label' => false, 'class' => 'form-control setPopover', 'id' => 'focusedInput', 'placeholder' => __('Correo'), 'data-toggle' => 'popover', 'data-placement' => 'right', 'data-content' => 'Introduce una cuenta de correo electrónico.', 'data-trigger' => 'active', 'aria-describedby' => 'popover906376')) ?>
 									<div class="help-block with-errors"></div>
+								</div>
+								<div class="form-group registro-form">
+									<?= $this->Form->input('file', array('type' => 'file', 'label' => false, 'class' => 'form-control', 'placeholder' => __('Correo'))) ?>
 								</div>
 								<div class="form-group registro-form">
 									<?= $this->Form->input('pass', array('label' => false, 'type' => 'password', 'class' => 'form-control setPopover', 'id' => 'inputPassword', 'placeholder' => __('Contraseña'), 'data-toggle' => 'popover', 'data-placement' => 'right', 'data-content' => 'Introduce una contraseña.', 'data-trigger' => 'active', 'aria-describedby' => 'popover906376', "data-minlength" => "8", "required" => "required" )) ?>
