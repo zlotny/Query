@@ -87,6 +87,12 @@ body{
 	width: 250px;
 }
 
+.navbar-img {
+  max-height:20px;
+  width:auto;
+  vertical-align:middle;
+}
+
 .puntuacion{
 	position:relative;
 	height: 10px;
