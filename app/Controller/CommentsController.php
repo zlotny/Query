@@ -53,5 +53,12 @@ class CommentsController extends AppController {
 		
 	}
 
+	public function votes($id_comment){
+		$sql = "SELECT sum(vote) from comments_users where comment_id = $id_comment";
+		$numVotosComment = $this->Comment->query($sql);
+		//$this->set('numVotosComment', $numVotosComment);
+		return $numVotosComment[0][0]["sum(vote)"];
+	}
+
 }
 ?>
