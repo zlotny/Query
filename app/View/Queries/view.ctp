@@ -12,7 +12,7 @@
 			if($this->Session->read("User.id")){
 				
 				$id_user =$this->Session->read("User.id");
-				$id_query=$targetQuery['Query']['id'];
+								$id_query=$targetQuery['Query']['id'];
 				$voted = $this->requestAction("/users/voted/$id_user/$id_query");
 				
 				if($voted && $voted[0]["queries_users"]["vote"]==1){
@@ -64,12 +64,14 @@
 						'width' => '15'
 						));				
 				}
+				
+
 				if(empty($voted)){
 					echo $this->Html->image('arrow_down_white.png', array(
 						'alt' => 'Arrow Down',
 						'height' => '15', 
 						'width' => '15',
-						'url' => array('controller' => 'queries', 'action' => 'vote', 'down',$targetQuery["Query"]["id"], $id_user)
+						'url' => array('controller' => 'queries', 'action' => 'vote', 'down',$targetQuery["Query"]["id"],$id_user)
 						));	
 				}
 				
@@ -167,7 +169,7 @@
 							'alt' => 'Arrow Down',
 							'height' => '30', 
 							'width' => '30',
-							'url' => array('controller' => 'queries', 'action' => 'vote', 'down',$targetQuery["Query"]["id"]), $id_user
+							'url' => array('controller' => 'queries', 'action' => 'vote', 'down',$targetQuery["Query"]["id"], $id_user)
 							));
 						echo '</br>';	
 					}

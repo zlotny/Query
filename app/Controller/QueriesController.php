@@ -23,6 +23,31 @@ class QueriesController extends AppController {
 		$allQuerys = $this->Query->find('all');
 		$this->set('allQuerys', $this->Query->find('all'));
 		$numAllQuerys = sizeof($allQuerys);
+
+		foreach ($queries as $key => $row) {
+			$sql = "Select count(vote) as positiveVote from queries_users where query_id = ".$row["Query"]["id"]." and vote = 1";
+			$sql2 = "Select count(vote) as negativeVote from queries_users where query_id = ".$row["Query"]["id"]." and vote = -1";		
+			$positive = $this->Query->query($sql)[0][0]["positiveVote"];
+			$negative = $this->Query->query($sql2)[0][0]["negativeVote"];
+			
+			if(($positive+$negative) == 0){
+				$percentagePositive=50;
+				$percentageNegative=50;
+			}
+			else{
+				$percentagePositive = $positive*(100/($positive + $negative)); 
+				$percentageNegative = $negative*(100/($positive + $negative));
+				
+			}
+			$votesQuery[$row["Query"]["id"]] = array(array('positiveVote' => $positive) , 
+				array('negativeVote' => $negative ),
+				array('percentagePositive' => $percentagePositive),
+				array('percentageNegative' => $percentageNegative)
+				);
+
+		}
+		
+		$this->set("votesQuery", $votesQuery);
 		$sql = "SELECT query_id FROM queries_users GROUP BY query_id";
 		$votedQueries = $this->Query->query($sql);
 		$numVotedQueries = sizeof($votedQueries);
@@ -71,10 +96,14 @@ class QueriesController extends AppController {
 		$allQuerys = $this->Query->find('all');
 		$this->set('allQuerys', $this->Query->find('all'));
 		$numAllQuerys = sizeof($allQuerys);
+		
+
+
 		$sql = "SELECT query_id FROM queries_users GROUP BY query_id";
 		$votedQueries = $this->Query->query($sql);
 		$numVotedQueries = sizeof($votedQueries);
 		$this->set('queriesNoVotes', $numAllQuerys-$numVotedQueries);
+
 	}
 
 
@@ -101,8 +130,7 @@ class QueriesController extends AppController {
 		}
 		$voto = ($tipo=='up') ? 1 : -1 ;
 		//$userId = $this->Session->read('User.id');
-		$query = "Insert into queries_users (vote, user_id, query_id) values ($voto, $userId ,$id_query)";
-
+		$query = "Insert into queries_users (vote, user_id, query_id) values ($voto, $userId,$id_query)";
 
 		$this->Query->query($query);
 		$this->redirect(array('controller' => 'queries', 'action' => 'view', $id_query));
@@ -124,6 +152,7 @@ class QueriesController extends AppController {
 		$this->redirect(array('controller' => 'queries', 'action' => 'view', $id_query));
 		
 	}
+
 
 
 }

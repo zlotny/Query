@@ -55,9 +55,14 @@
 							<span class="title" ><a class="pregunta-link" href="view.html"><?= $this->Html->link($query['Query']['title'], array('controller' => 'queries', 'action' => 'view', $query['Query']['id'])) ?></a></span>
 							<br>
 							<div class="tags-y-puntuacion">
+								
 								<div class="progress progress-striped active puntuacion">
-									<div class="progress-bar progress-bar-success" style="width: 50%"><span class="count-votos">30 votos</span></div>
-									<div class="progress-bar progress-bar-danger" style="width: 50%"><span class="count-votos">30 votos</span></div>
+									<?php
+									if($votesQuery[$query['Query']['id']][2]['percentagePositive']!=0){
+										echo "<div class='progress-bar progress-bar-success' style='width:".$votesQuery[$query['Query']['id']][2]['percentagePositive']."%'><span class='count-votos'>".$votesQuery[$query['Query']['id']][0]['positiveVote']." votos</span></div>";		
+									}
+									echo "<div class='progress-bar progress-bar-danger' style='width: ".$votesQuery[$query['Query']['id']][3]['percentageNegative']."%'><span class='count-votos'>".$votesQuery[$query['Query']['id']][1]['negativeVote']." votos</span></div>";
+									?>
 								</div>
 							</div>
 						</li>
