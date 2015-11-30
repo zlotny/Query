@@ -46,7 +46,7 @@ class QueriesController extends AppController {
 				);
 
 		}
-		
+
 		$this->set("votesQuery", $votesQuery);
 		$sql = "SELECT query_id FROM queries_users GROUP BY query_id";
 		$votedQueries = $this->Query->query($sql);
@@ -91,6 +91,30 @@ class QueriesController extends AppController {
 				array('Query.title LIKE'=>'%'.$datos.'%'),)
 			));
 		$data = $this->Paginator->paginate('Query');
+
+		foreach ($data as $key => $row) {
+			$sql = "Select count(vote) as positiveVote from queries_users where query_id = ".$row["Query"]["id"]." and vote = 1";
+			$sql2 = "Select count(vote) as negativeVote from queries_users where query_id = ".$row["Query"]["id"]." and vote = -1";		
+			$positive = $this->Query->query($sql)[0][0]["positiveVote"];
+			$negative = $this->Query->query($sql2)[0][0]["negativeVote"];
+			
+			if(($positive+$negative) == 0){
+				$percentagePositive=50;
+				$percentageNegative=50;
+			}
+			else{
+				$percentagePositive = $positive*(100/($positive + $negative)); 
+				$percentageNegative = $negative*(100/($positive + $negative));
+				
+			}
+			$votesQuery[$row["Query"]["id"]] = array(array('positiveVote' => $positive) , 
+				array('negativeVote' => $negative ),
+				array('percentagePositive' => $percentagePositive),
+				array('percentageNegative' => $percentageNegative)
+				);
+
+		}
+		$this->set("votesQuery", $votesQuery);
 
 		$this->set('querys', $data);
 		$allQuerys = $this->Query->find('all');

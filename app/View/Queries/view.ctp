@@ -379,10 +379,11 @@
 
 						}
 				//<img src="./img/arrow_up_white.png" alt="Arrow Up" height="15" width="15">-->
-
+						echo "</br>";
 						$numVotosComment = $this->requestAction("/comments/votes/$id_comment");							
 						if(!empty($numVotosComment)) echo '<span class="vote-count"> '.$numVotosComment.' </span>';
 						else echo '<span class="vote-count"> 0 </span>';
+						echo "</br>";
 
 
 						if($votedComment && $votedComment[0]["comments_users"]["vote"]==1){
@@ -424,9 +425,10 @@
 							));
 
 						$numVotosComment = $this->requestAction("/comments/votes/$id_comment");
-
+						echo "</br>";
 						if(!empty($numVotosComment)) echo '<span class="vote-count"> '.$numVotosComment.' </span>';
 						else echo '<span class="vote-count"> 0 </span>';
+						echo "</br>";
 						echo $this->Html->image('arrow_down_white.png', array(
 							'alt' => 'Arrow Down',
 							'height' => '15', 
