@@ -161,7 +161,7 @@
 						<div class
 						"container-fluid">
 						<div class="col-sm-9">
-							<p class="eula"><?= __("Registrándote en Query das a entender que aceptas nuestros términos de licencia de usuario. Puedes consultarlos "); ?><a target="_blank"
+							<p class="eula"><?= __("Registrándote en Query das a entender que aceptas nuestros términos de licencia de usuario. Puedes consultarlos")." "; ?><a target="_blank"
 								href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><?= __("aquí"); ?></a>
 							</p>
 						</div>
