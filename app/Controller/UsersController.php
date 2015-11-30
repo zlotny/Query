@@ -112,8 +112,7 @@ class UsersController extends AppController
 
     public function lang($lang){
         $this->Cookie->write('lang', $lang);
-        $this->redirect(array('controller' => 'queries', 'action' => 'index'));
-
+        $this->redirect($this->referer());
     }
 
     public function voted($id_user, $id_query){

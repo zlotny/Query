@@ -48,7 +48,7 @@
                             <span class="pull-right close-button" onclick="closeAndRemember()">X</span>
                             <blockquote>
                                 <p><?= __("Query es una comunidad de preguntas y respuestas sobre el mundo de la tecnología de la información. Regístrate para unirte a la comunidad y resolver de una vez por todas tus dudas!"); ?></p>
-                                <small><?= __("El equipo de "); ?><cite class="quizma-font-bold" title="Query"><?= __("Query"); ?></cite></small>
+                                <small><?= __("El equipo de "); ?><cite class="quizma-font-bold" title="Query"><?= " Query"; ?></cite></small>
                             </blockquote>
                         </div>
                     </div>

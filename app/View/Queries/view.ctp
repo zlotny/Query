@@ -4,7 +4,7 @@
 	<h2 class="query-title"><?= $targetQuery["Query"]["title"]; ?></h2>
 	<div class="container-fluid row">
 		<div class="col-sm-12 col-xs-8">
-			<small class="creator"><?= __("Creado por "); ?><?= $this->Html->link($author["username"], "/users/view/".$author["id"]);?> - <?= $targetQuery["Query"]["created"]; ?></small>
+			<small class="creator"><?= __("Creado por")." "; ?><?= $this->Html->link($author["username"], "/users/view/".$author["id"]);?> - <?= $targetQuery["Query"]["created"]; ?></small>
 		</div>
 		<div class="visible-xs col-xs-4">
 
