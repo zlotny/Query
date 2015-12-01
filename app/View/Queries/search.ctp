@@ -4,19 +4,7 @@
 			<div class="col-sm-8">
 				<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#pregunta"><?= __("Publica tu Query!"); ?></a>
 				<span class="pull-right">
-					<ul class="nav nav-pills">
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-								<?= __("Filtro"); ?> <span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li><a href="#"><?= __("Últimas preguntas"); ?></a></li>
-								<li><a href="#"><?= __("Más respondidas (30 días)"); ?></a></li>
-								<li class="divider"></li>
-								<li class="disabled"><a href="#"><?= __("Mis preguntas"); ?></a></li>
-							</ul>
-						</li>
-					</ul>
+					
 				</span>
 			</div>
 			<div class="col-sm-4"></div>

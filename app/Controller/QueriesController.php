@@ -6,8 +6,9 @@ class QueriesController extends AppController {
 	public $paginate = array(
 		'limit' => 10,
 		'order' => array(
-			'Queries.created' => 'desc'
+			'Query.created' => 'desc'
 			)
+		
 		);
 	
 
@@ -46,8 +47,9 @@ class QueriesController extends AppController {
 				);
 
 		}
-
-		$this->set("votesQuery", $votesQuery);
+		if(!empty($queries)){
+			$this->set("votesQuery", $votesQuery);
+		}
 		$sql = "SELECT query_id FROM queries_users GROUP BY query_id";
 		$votedQueries = $this->Query->query($sql);
 		$numVotedQueries = sizeof($votedQueries);
@@ -59,6 +61,7 @@ class QueriesController extends AppController {
 		if (!$id) {
 			throw new NotFoundException(__('Invalid query'));
 		}
+
 		$query = $this->Query->find('all', array('conditions'=>array('id'=>$id), 'recursive'=>2));
 		$userQuery = $this->Query->query("Select * from users where id = '".$query[0]["Query"]["user_id"]."'");
 
@@ -67,6 +70,46 @@ class QueriesController extends AppController {
 		}
 		$this->set('targetQuery', $query[0]);
 		$this->set('author', $userQuery[0]["users"]);
+		
+		$sql = "SELECT comments.id, sum(comments_users.vote) as votes FROM comments, comments_users WHERE comments.query_id = ".$query[0]["Query"]["id"]."  AND comments.id = comments_users.comment_id GROUP BY comment_id";
+		$commentsWithVotes=$this->Query->query($sql);
+		$sql = "SELECT id FROM comments WHERE query_id = ".$query[0]["Query"]["id"];
+		$allCommentsQuery = $this->Query->query($sql);
+		foreach ($allCommentsQuery as $key => $row) {
+			$exist=false;
+			foreach ($commentsWithVotes as $key => $value) {
+				if($row['comments']['id'] == $value['comments']['id']){
+					$exist=true;
+					break;
+				}
+
+			}
+			
+			if(!$exist){
+				
+				$count = count($commentsWithVotes);
+				$commentsWithVotes[$count]['comments']['id']= $row['comments']['id'];
+				$commentsWithVotes[$count][0]['votes']= 0;
+			}
+			
+		}
+		$sortedComments = Set::sort($commentsWithVotes, '{n}.0.votes','desc');
+
+		$this->set('sortedComments', $sortedComments);
+
+		/*$commentsWithVotes[3]['comments']['id']=1;
+		$commentsWithVotes[3][0]['sum(comments_users.vote)']= 0;
+		print_r($commentsWithVotes);die();*/
+
+		
+		/*foreach ($query[0]['Comment'] as $key => $value) {
+			$sql = "SELECT sum(vote) as votes FROM comments_users where comment_id = ".$value['id'];
+			if(empty($this->Query->query($sql)[0][0]['votes']))
+				$aOrdenar[$value['id']]= 0;
+			else
+				$aOrdenar[$value['id']]= $this->Query->query($sql)[0][0]['votes'];
+		}
+		print_r(Set::sort($aOrdenar, '{n}', 'desc'));*/
 
 		$sql = "SELECT sum(vote) from queries_users where query_id = $id";
 		$numVotos = $this->Query->query($sql);
@@ -85,7 +128,7 @@ class QueriesController extends AppController {
 		$this->Paginator->settings = array(
 			'limit' => 10,
 			'order' => array(
-				'Queries.created' => 'desc'),
+				'Query.created' => 'desc'),
 			'conditions'=>array( 'OR' => array(
 				array('Query.content LIKE'=>'%'.$datos.'%'),
 				array('Query.title LIKE'=>'%'.$datos.'%'),)

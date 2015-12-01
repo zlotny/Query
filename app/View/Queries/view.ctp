@@ -18,59 +18,59 @@
 				if($voted && $voted[0]["queries_users"]["vote"]==1){
 					
 					$id_voto = $voted[0]["queries_users"]["id"];
-					echo $this->Html->image('arrow_up_white.png', array(
+					echo $this->Html->image('up-arrow-icon.png', array(
 						'alt' => 'Arrow Up',
-						'height' => '15', 
-						'width' => '15'
+						'height' => '20', 
+						'width' => '20'
 						));
 				}
 				if($voted && $voted[0]["queries_users"]["vote"]==-1){
 					
 					$id_voto = $voted[0]["queries_users"]["id"];
-					echo $this->Html->image('arrow_up_white.png', array(
+					echo $this->Html->image('up-arrow-icon.png', array(
 						'alt' => 'Arrow Up',
-						'height' => '15', 
-						'width' => '15',
+						'height' => '20', 
+						'width' => '20',
 						'url' => array('controller' => 'queries', 'action' => 'updateVote', 'up',$targetQuery["Query"]["id"], $id_voto, $id_user)
 						));				
 				}
 				if(empty($voted)){
 					
-					echo $this->Html->image('arrow_up_white.png', array(
+					echo $this->Html->image('up-arrow-icon.png', array(
 						'alt' => 'Arrow Up',
-						'height' => '15', 
-						'width' => '15',
+						'height' => '20', 
+						'width' => '20',
 						'url' => array('controller' => 'queries', 'action' => 'vote', 'up',$targetQuery["Query"]["id"], $id_user)
 						));	
 				}
-				//<img src="./img/arrow_up_white.png" alt="Arrow Up" height="15" width="15">-->
+				//<img src="./img/up-arrow-icon.png" alt="Arrow Up" height="20" width="20">-->
 				if(!empty($numVotos)) echo '<span class="vote-count"> '.$numVotos.' </span>';
 				else echo '<span class="vote-count"> 0 </span>';
 				
 				if($voted && $voted[0]["queries_users"]["vote"]==1){
 					$id_voto = $voted[0]["queries_users"]["id"];
-					echo $this->Html->image('arrow_down_white.png', array(
+					echo $this->Html->image('down-arrow-icon.png', array(
 						'alt' => 'Arrow Down',
-						'height' => '15', 
-						'width' => '15',
+						'height' => '20', 
+						'width' => '20',
 						'url' => array('controller' => 'queries', 'action' => 'updateVote', 'down',$targetQuery["Query"]["id"], $id_voto, $id_user)
 						));
 				}
 				if($voted && $voted[0]["queries_users"]["vote"]==-1){
 					$id_voto = $voted[0]["queries_users"]["id"];
-					echo $this->Html->image('arrow_down_white.png', array(
+					echo $this->Html->image('down-arrow-icon.png', array(
 						'alt' => 'Arrow Down',
-						'height' => '15', 
-						'width' => '15'
+						'height' => '20', 
+						'width' => '20'
 						));				
 				}
 				
 
 				if(empty($voted)){
-					echo $this->Html->image('arrow_down_white.png', array(
+					echo $this->Html->image('down-arrow-icon.png', array(
 						'alt' => 'Arrow Down',
-						'height' => '15', 
-						'width' => '15',
+						'height' => '20', 
+						'width' => '20',
 						'url' => array('controller' => 'queries', 'action' => 'vote', 'down',$targetQuery["Query"]["id"],$id_user)
 						));	
 				}
@@ -78,17 +78,17 @@
 			}
 			else{
 
-				echo $this->Html->image('arrow_up_white.png', array(
+				echo $this->Html->image('up-arrow-icon.png', array(
 					'alt' => 'Arrow Up',
-					'height' => '15', 
-					'width' => '15'
+					'height' => '20', 
+					'width' => '20'
 					));
 				if(!empty($numVotos)) echo '<span class="vote-count"> '.$numVotos.' </span>';
 				else echo '<span class="vote-count"> 0 </span>';
-				echo $this->Html->image('arrow_down_white.png', array(
+				echo $this->Html->image('down-arrow-icon.png', array(
 					'alt' => 'Arrow Down',
-					'height' => '15', 
-					'width' => '15'
+					'height' => '20', 
+					'width' => '20'
 					));
 				
 			}
@@ -111,7 +111,7 @@
 					if($voted && $voted[0]["queries_users"]["vote"]==1){
 						
 						$id_voto = $voted[0]["queries_users"]["id"];
-						echo $this->Html->image('arrow_up_white.png', array(
+						echo $this->Html->image('up-arrow-icon.png', array(
 							'alt' => 'Arrow Up',
 							'height' => '30', 
 							'width' => '30'
@@ -122,7 +122,7 @@
 					if($voted && $voted[0]["queries_users"]["vote"]==-1){
 						
 						$id_voto = $voted[0]["queries_users"]["id"];
-						echo $this->Html->image('arrow_up_white.png', array(
+						echo $this->Html->image('up-arrow-icon.png', array(
 							'alt' => 'Arrow Up',
 							'height' => '30', 
 							'width' => '30',
@@ -132,7 +132,7 @@
 					}
 					if(empty($voted)){
 						
-						echo $this->Html->image('arrow_up_white.png', array(
+						echo $this->Html->image('up-arrow-icon.png', array(
 							'alt' => 'Arrow Up',
 							'height' => '30', 
 							'width' => '30',
@@ -140,14 +140,14 @@
 							));
 						echo '</br>';	
 					}
-				//<img src="./img/arrow_up_white.png" alt="Arrow Up" height="30" width="30">-->
+				//<img src="./img/up-arrow-icon.png" alt="Arrow Up" height="30" width="30">-->
 					if(!empty($numVotos)) echo '<span class="vote-count">'.$numVotos.'</span>';
 					else echo '<span class="vote-count"> 0 </span>';
 					echo '</br>';
 					
 					if($voted && $voted[0]["queries_users"]["vote"]==1){
 						$id_voto = $voted[0]["queries_users"]["id"];
-						echo $this->Html->image('arrow_down_white.png', array(
+						echo $this->Html->image('down-arrow-icon.png', array(
 							'alt' => 'Arrow Down',
 							'height' => '30', 
 							'width' => '30',
@@ -157,7 +157,7 @@
 					}
 					if($voted && $voted[0]["queries_users"]["vote"]==-1){
 						$id_voto = $voted[0]["queries_users"]["id"];
-						echo $this->Html->image('arrow_down_white.png', array(
+						echo $this->Html->image('down-arrow-icon.png', array(
 							'alt' => 'Arrow Down',
 							'height' => '30', 
 							'width' => '30'
@@ -165,7 +165,7 @@
 						echo '</br>';				
 					}
 					if(empty($voted)){
-						echo $this->Html->image('arrow_down_white.png', array(
+						echo $this->Html->image('down-arrow-icon.png', array(
 							'alt' => 'Arrow Down',
 							'height' => '30', 
 							'width' => '30',
@@ -177,7 +177,7 @@
 				}
 				else{
 
-					echo $this->Html->image('arrow_up_white.png', array(
+					echo $this->Html->image('up-arrow-icon.png', array(
 						'alt' => 'Arrow Up',
 						'height' => '30', 
 						'width' => '30'
@@ -185,7 +185,7 @@
 					echo '</br>';
 					if(!empty($numVotos)) echo '<span class="vote-count">'.$numVotos.' </span></br>';
 					else echo '<span class="vote-count"> 0 </span></br>';
-					echo $this->Html->image('arrow_down_white.png', array(
+					echo $this->Html->image('down-arrow-icon.png', array(
 						'alt' => 'Arrow Down',
 						'height' => '30', 
 						'width' => '30'
@@ -243,7 +243,7 @@
 							if($votedComment && $votedComment[0]["comments_users"]["vote"]==1){
 
 								$id_voto = $votedComment[0]["comments_users"]["id"];
-								echo $this->Html->image('arrow_up_white.png', array(
+								echo $this->Html->image('up-arrow-icon.png', array(
 									'alt' => 'Arrow Up',
 									'height' => '30', 
 									'width' => '30'
@@ -254,7 +254,7 @@
 							if($votedComment && $votedComment[0]["comments_users"]["vote"]==-1){
 
 								$id_voto = $votedComment[0]["comments_users"]["id"];
-								echo $this->Html->image('arrow_up_white.png', array(
+								echo $this->Html->image('up-arrow-icon.png', array(
 									'alt' => 'Arrow Up',
 									'height' => '30', 
 									'width' => '30',
@@ -264,7 +264,7 @@
 							}
 							if(empty($votedComment)){
 
-								echo $this->Html->image('arrow_up_white.png', array(
+								echo $this->Html->image('up-arrow-icon.png', array(
 									'alt' => 'Arrow Up',
 									'height' => '30', 
 									'width' => '30',
@@ -272,7 +272,7 @@
 									));
 								echo '</br>';	
 							}
-				//<img src="./img/arrow_up_white.png" alt="Arrow Up" height="30" width="30">-->
+				//<img src="./img/up-arrow-icon.png" alt="Arrow Up" height="30" width="30">-->
 							$numVotosComment = $this->requestAction("/comments/votes/$id_comment");
 							if(!empty($numVotosComment)) echo '<span class="vote-count"> '.$numVotosComment.' </span>';
 							else echo '<span class="vote-count"> 0 </span>';
@@ -280,7 +280,7 @@
 
 							if($votedComment && $votedComment[0]["comments_users"]["vote"]==1){
 								$id_voto = $votedComment[0]["comments_users"]["id"];
-								echo $this->Html->image('arrow_down_white.png', array(
+								echo $this->Html->image('down-arrow-icon.png', array(
 									'alt' => 'Arrow Down',
 									'height' => '30', 
 									'width' => '30',
@@ -290,7 +290,7 @@
 							}
 							if($votedComment && $votedComment[0]["comments_users"]["vote"]==-1){
 								$id_voto = $votedComment[0]["comments_users"]["id"];
-								echo $this->Html->image('arrow_down_white.png', array(
+								echo $this->Html->image('down-arrow-icon.png', array(
 									'alt' => 'Arrow Down',
 									'height' => '30', 
 									'width' => '30'
@@ -298,7 +298,7 @@
 								echo '</br>';				
 							}
 							if(empty($votedComment)){
-								echo $this->Html->image('arrow_down_white.png', array(
+								echo $this->Html->image('down-arrow-icon.png', array(
 									'alt' => 'Arrow Down',
 									'height' => '30', 
 									'width' => '30',
@@ -310,7 +310,7 @@
 						}
 						else{
 
-							echo $this->Html->image('arrow_up_white.png', array(
+							echo $this->Html->image('up-arrow-icon.png', array(
 								'alt' => 'Arrow Up',
 								'height' => '30', 
 								'width' => '30'
@@ -319,7 +319,7 @@
 							$numVotosComment = $this->requestAction("/comments/votes/$id_comment");
 							if(!empty($numVotosComment)) echo '<span class="vote-count"> '.$numVotosComment.' </span><br/>';
 							else echo '<span class="vote-count">  0 </span></br>';
-							echo $this->Html->image('arrow_down_white.png', array(
+							echo $this->Html->image('down-arrow-icon.png', array(
 								'alt' => 'Arrow Down',
 								'height' => '30', 
 								'width' => '30'
@@ -349,10 +349,10 @@
 						if($votedComment && $votedComment[0]["comments_users"]["vote"]==1){
 
 							$id_voto = $votedComment[0]["comments_users"]["id"];
-							echo $this->Html->image('arrow_up_white.png', array(
+							echo $this->Html->image('up-arrow-icon.png', array(
 								'alt' => 'Arrow Up',
-								'height' => '15', 
-								'width' => '15'
+								'height' => '20', 
+								'width' => '20'
 								));
 
 
@@ -360,25 +360,25 @@
 						if($votedComment && $votedComment[0]["comments_users"]["vote"]==-1){
 
 							$id_voto = $votedComment[0]["comments_users"]["id"];
-							echo $this->Html->image('arrow_up_white.png', array(
+							echo $this->Html->image('up-arrow-icon.png', array(
 								'alt' => 'Arrow Up',
-								'height' => '15', 
-								'width' => '15',
+								'height' => '20', 
+								'width' => '20',
 								'url' => array('controller' => 'comments', 'action' => 'updateVoteComment', 'up',$comment["id"],$id_voto, $id_user, $targetQuery["Query"]["id"])
 								));
 
 						}
 						if(empty($votedComment)){
 
-							echo $this->Html->image('arrow_up_white.png', array(
+							echo $this->Html->image('up-arrow-icon.png', array(
 								'alt' => 'Arrow Up',
-								'height' => '15', 
-								'width' => '15',
+								'height' => '20', 
+								'width' => '20',
 								'url' => array('controller' => 'comments', 'action' => 'voteComment', 'up',$comment["id"], $id_user, $targetQuery["Query"]["id"])
 								));
 
 						}
-				//<img src="./img/arrow_up_white.png" alt="Arrow Up" height="15" width="15">-->
+				//<img src="./img/up-arrow-icon.png" alt="Arrow Up" height="20" width="20">-->
 						echo "</br>";
 						$numVotosComment = $this->requestAction("/comments/votes/$id_comment");							
 						if(!empty($numVotosComment)) echo '<span class="vote-count"> '.$numVotosComment.' </span>';
@@ -388,28 +388,28 @@
 
 						if($votedComment && $votedComment[0]["comments_users"]["vote"]==1){
 							$id_voto = $votedComment[0]["comments_users"]["id"];
-							echo $this->Html->image('arrow_down_white.png', array(
+							echo $this->Html->image('down-arrow-icon.png', array(
 								'alt' => 'Arrow Down',
-								'height' => '15', 
-								'width' => '15',
+								'height' => '20', 
+								'width' => '20',
 								'url' => array('controller' => 'comments', 'action' => 'updateVoteComment', 'down',$comment["id"],$id_voto, $id_user, $targetQuery["Query"]["id"])
 								));
 
 						}
 						if($votedComment && $votedComment[0]["comments_users"]["vote"]==-1){
 							$id_voto = $votedComment[0]["comments_users"]["id"];
-							echo $this->Html->image('arrow_down_white.png', array(
+							echo $this->Html->image('down-arrow-icon.png', array(
 								'alt' => 'Arrow Down',
-								'height' => '15', 
-								'width' => '15'
+								'height' => '20', 
+								'width' => '20'
 								));
 
 						}
 						if(empty($votedComment)){
-							echo $this->Html->image('arrow_down_white.png', array(
+							echo $this->Html->image('down-arrow-icon.png', array(
 								'alt' => 'Arrow Down',
-								'height' => '15', 
-								'width' => '15',
+								'height' => '20', 
+								'width' => '20',
 								'url' => array('controller' => 'comments', 'action' => 'voteComment', 'down',$comment["id"], $id_user, $targetQuery["Query"]["id"])
 								));
 
@@ -418,10 +418,10 @@
 					}
 					else{
 
-						echo $this->Html->image('arrow_up_white.png', array(
+						echo $this->Html->image('up-arrow-icon.png', array(
 							'alt' => 'Arrow Up',
-							'height' => '15', 
-							'width' => '15'
+							'height' => '20', 
+							'width' => '20'
 							));
 
 						$numVotosComment = $this->requestAction("/comments/votes/$id_comment");
@@ -429,19 +429,19 @@
 						if(!empty($numVotosComment)) echo '<span class="vote-count"> '.$numVotosComment.' </span>';
 						else echo '<span class="vote-count"> 0 </span>';
 						echo "</br>";
-						echo $this->Html->image('arrow_down_white.png', array(
+						echo $this->Html->image('down-arrow-icon.png', array(
 							'alt' => 'Arrow Down',
-							'height' => '15', 
-							'width' => '15'
+							'height' => '20', 
+							'width' => '20'
 							));
 
 
 					}
 
 					?>
-					<!--<img src="./img/arrow_up_white.png" alt="Arrow Up" height="30" width="30"><br>
+					<!--<img src="./img/up-arrow-icon.png" alt="Arrow Up" height="30" width="30"><br>
 					<span class="vote-count">+10  </span><br>
-					<img src="./img/arrow_down_white.png" alt="Arrow Down" height="30" width="30">-->
+					<img src="./img/down-arrow-icon.png" alt="Arrow Down" height="30" width="30">-->
 				</div>
 			</div>
 
@@ -457,7 +457,10 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title"><img class="modal-header-icon" src="./img/icon_dark_background.png" ></img><?= __("Responder"); ?></h4>
+						<h4 class="modal-title"><?= $this->Html->image('icon_dark_background', array(
+							'alt' => 'icono',
+							'class' => 'modal-header-icon'
+							));?><!--<img class="modal-header-icon" src="/img/icon_dark_background.png" ></img>--><?= __("Responder"); ?></h4>
 					</div>
 					<div class="modal-body">
 						<div class="container-fluid">

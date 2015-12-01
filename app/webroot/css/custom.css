@@ -108,7 +108,8 @@ body{
 	position:relative;
 	top:-6px;
 	font-size: 10px;
-	color: #eaeaea;
+	color: #333333;
+	font-weight: bold;
 }
 
 .titulo-lista{

@@ -26,9 +26,6 @@
 
 
             <!-- Flash -->
-            <div id="flash">
-                <?php echo $this->Flash->render(); ?>
-            </div>
 
 
 

@@ -17,7 +17,7 @@
 							</a>
 							<ul class="dropdown-menu">
 
-								<li><?= $this->Paginator->sort('modified', __("Últimas preguntas"), array('direction' => 'desc', 'lock' => true)); ?></li>
+								<li><?= $this->Paginator->sort('modified', __("Últimas preguntas"), array('direction' => 'asc', 'lock' => true)); ?></li>
 
 								<?php
 								if($this->Session->read("User.id")){
