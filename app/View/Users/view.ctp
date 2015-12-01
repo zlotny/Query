@@ -63,7 +63,7 @@
 								<label for="name">
 									<?php echo __("Contraseña") ?>
 								</label>
-								<?= $this->Form->input('userpass', array('label' => false, 'type' => 'password', 'class' => 'form-control setPopover', 'id' => 'focusedInput', 'value' => $targetUser["User"]["pass"], 'data-toggle' => 'popover', 'data-placement' => 'right', 'data-content' => __('Modifica tu contraseña.'), 'data-trigger' => 'active', 'aria-describedby' => 'popover906376', "data-minlength" => "8")) ?>
+								<?= $this->Form->input('pass', array('label' => false, 'type' => 'password', 'class' => 'form-control setPopover', 'id' => 'focusedInput', 'data-toggle' => 'popover', 'data-placement' => 'right', 'data-content' => __('Modifica tu contraseña.'), 'data-trigger' => 'active', 'aria-describedby' => 'popover906376', "data-minlength" => "8")) ?>
 							</div>
 							
 							<div class="form-group">

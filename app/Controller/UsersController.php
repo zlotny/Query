@@ -25,6 +25,8 @@ class UsersController extends AppController
     public function login(){
         if ($this->request->is('post')) {
             $toLogin = $this->User->findByEmail($this->request->data['User']['useremail']);
+            $this->request->data['User']['userpass'] = md5($this->request->data['User']['userpass']);
+
             if($toLogin && $toLogin["User"]["pass"] == $this->request->data['User']['userpass']) {
                 $this->Session->write('User.email', $this->request->data['User']['useremail']);
                 $this->Session->write('User.id', $toLogin['User']['id']);
@@ -47,7 +49,8 @@ class UsersController extends AppController
     {
         if ($this->request->is('post')) {
             if ($this->request->data['User']['pass'] == $this->request->data['User']['pass2']) {
-
+                //Encrypt password
+                $this->request->data['User']['pass'] = md5($this->request->data['User']['pass']);
                 /* Prepare image to be uploaded */
             //Check if image has been uploaded
                 if (!empty($this->request->data['User']['file']['name'])) {
@@ -101,11 +104,16 @@ class UsersController extends AppController
         }            
 
         $this->User->id = $id;
+        if($this->request->data['User']['pass'] != ""){
+            $this->request->data['User']['pass'] = md5($this->request->data['User']['pass']);
+        }
+
         if ($this->User->save($this->request->data)) {
             $this->Flash->success("Usuario actualizado satisfactoriamente.");
         } else {
             $this->Flash->error("Error al actualizar usuario.");
         }
+
 
         $this->redirect(array('controller' => 'users', 'action' => 'view', $id));
     }
