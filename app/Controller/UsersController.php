@@ -106,6 +106,9 @@ class UsersController extends AppController
         $this->User->id = $id;
         if($this->request->data['User']['pass'] != ""){
             $this->request->data['User']['pass'] = md5($this->request->data['User']['pass']);
+        } else {
+            $user = $this->User->findByEmail($this->request->data['User']['email']);
+            $this->request->data['User']['pass'] = $user["User"]["pass"];
         }
 
         if ($this->User->save($this->request->data)) {
