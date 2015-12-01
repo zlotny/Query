@@ -12,7 +12,7 @@
 			if($this->Session->read("User.id")){
 				
 				$id_user =$this->Session->read("User.id");
-								$id_query=$targetQuery['Query']['id'];
+				$id_query=$targetQuery['Query']['id'];
 				$voted = $this->requestAction("/users/voted/$id_user/$id_query");
 				
 				if($voted && $voted[0]["queries_users"]["vote"]==1){
@@ -226,7 +226,10 @@
 		-->
 
 		
-		<?php foreach ($targetQuery["Comment"] as $comment){
+		<?php 
+			//$targetQuery["Comment"]
+			foreach ($sortedComments as $comment){
+				
 			?>
 
 
@@ -234,7 +237,7 @@
 				<div class="col-sm-1 hidden-xs">
 					<div class="vote">
 						<?php 
-						$id_comment = $comment['id'];
+						$id_comment = $comment['comments']['id'];
 						if($this->Session->read("User.id")){
 							
 							$id_user =$this->Session->read("User.id");
@@ -258,7 +261,7 @@
 									'alt' => 'Arrow Up',
 									'height' => '30', 
 									'width' => '30',
-									'url' => array('controller' => 'comments', 'action' => 'updateVoteComment', 'up',$comment["id"],$id_voto, $id_user, $targetQuery["Query"]["id"])
+									'url' => array('controller' => 'comments', 'action' => 'updateVoteComment', 'up',$comment['comments']['id'],$id_voto, $id_user, $targetQuery["Query"]["id"])
 									));
 								echo '</br>';				
 							}
@@ -268,7 +271,7 @@
 									'alt' => 'Arrow Up',
 									'height' => '30', 
 									'width' => '30',
-									'url' => array('controller' => 'comments', 'action' => 'voteComment', 'up',$comment["id"], $id_user, $targetQuery["Query"]["id"])
+									'url' => array('controller' => 'comments', 'action' => 'voteComment', 'up',$comment['comments']['id'], $id_user, $targetQuery["Query"]["id"])
 									));
 								echo '</br>';	
 							}
@@ -284,7 +287,7 @@
 									'alt' => 'Arrow Down',
 									'height' => '30', 
 									'width' => '30',
-									'url' => array('controller' => 'comments', 'action' => 'updateVoteComment', 'down',$comment["id"],$id_voto, $id_user, $targetQuery["Query"]["id"])
+									'url' => array('controller' => 'comments', 'action' => 'updateVoteComment', 'down',$comment['comments']['id'],$id_voto, $id_user, $targetQuery["Query"]["id"])
 									));
 								echo '</br>';
 							}
@@ -302,7 +305,7 @@
 									'alt' => 'Arrow Down',
 									'height' => '30', 
 									'width' => '30',
-									'url' => array('controller' => 'comments', 'action' => 'voteComment', 'down',$comment["id"], $id_user, $targetQuery["Query"]["id"])
+									'url' => array('controller' => 'comments', 'action' => 'voteComment', 'down',$comment['comments']['id'], $id_user, $targetQuery["Query"]["id"])
 									));
 								echo '</br>';	
 							}
@@ -327,20 +330,31 @@
 							echo '</br>';
 
 						}
+
+						//$targetQuery["Comment"]
+						foreach ($targetQuery["Comment"] as $key => $row) {
+							if($comment['comments']['id'] == $row['id']){
+								$comment_content=$row['content'];
+								$comment_picture=$row['User']['profile_pic_route'];
+								$comment_username=$row['User']['username'];
+								$comment_userId=$row['User']['id'];
+								break;
+							}
+						}
 						?>
 						
 					</div>
 				</div>
-				<div class="col-sm-9 col-xs-12 bubble"><?= $comment['content']; ?>
+				<div class="col-sm-9 col-xs-12 bubble"><?= $comment_content; ?>
 				</div>
-				<div class="col-sm-2 col-xs-3 restriccion"><?php echo $this->Html->image("user-icons/".$comment['User']['profile_pic_route'], array('alt' => 'Avatar', "class" => "comment-profile-img", "height" => "80")); ?>
+				<div class="col-sm-2 col-xs-3 restriccion"><?php echo $this->Html->image("user-icons/".$comment_picture, array('alt' => 'Avatar', "class" => "comment-profile-img", "height" => "80")); ?>
 					<br>
 
-					<p class=" query-response-user-name"><?= $this->Html->link($comment['User']['username'], "/users/view/".$comment['User']['id']);?></p>
+					<p class=" query-response-user-name"><?= $this->Html->link($comment_username, "/users/view/".$comment_userId);?></p>
 				</div>
 				<div class="visible-xs col-xs-9">
 					<?php
-					$id_comment = $comment['id'];
+					$id_comment = $comment['comments']['id'];
 					if($this->Session->read("User.id")){
 
 						$id_user =$this->Session->read("User.id");
@@ -364,7 +378,7 @@
 								'alt' => 'Arrow Up',
 								'height' => '20', 
 								'width' => '20',
-								'url' => array('controller' => 'comments', 'action' => 'updateVoteComment', 'up',$comment["id"],$id_voto, $id_user, $targetQuery["Query"]["id"])
+								'url' => array('controller' => 'comments', 'action' => 'updateVoteComment', 'up',$comment['comments']['id'],$id_voto, $id_user, $targetQuery["Query"]["id"])
 								));
 
 						}
@@ -374,7 +388,7 @@
 								'alt' => 'Arrow Up',
 								'height' => '20', 
 								'width' => '20',
-								'url' => array('controller' => 'comments', 'action' => 'voteComment', 'up',$comment["id"], $id_user, $targetQuery["Query"]["id"])
+								'url' => array('controller' => 'comments', 'action' => 'voteComment', 'up',$comment['comments']['id'], $id_user, $targetQuery["Query"]["id"])
 								));
 
 						}
@@ -392,7 +406,7 @@
 								'alt' => 'Arrow Down',
 								'height' => '20', 
 								'width' => '20',
-								'url' => array('controller' => 'comments', 'action' => 'updateVoteComment', 'down',$comment["id"],$id_voto, $id_user, $targetQuery["Query"]["id"])
+								'url' => array('controller' => 'comments', 'action' => 'updateVoteComment', 'down',$comment['comments']['id'],$id_voto, $id_user, $targetQuery["Query"]["id"])
 								));
 
 						}
@@ -410,7 +424,7 @@
 								'alt' => 'Arrow Down',
 								'height' => '20', 
 								'width' => '20',
-								'url' => array('controller' => 'comments', 'action' => 'voteComment', 'down',$comment["id"], $id_user, $targetQuery["Query"]["id"])
+								'url' => array('controller' => 'comments', 'action' => 'voteComment', 'down',$comment['comments']['id'], $id_user, $targetQuery["Query"]["id"])
 								));
 
 						}
@@ -461,29 +475,29 @@
 							'alt' => 'icono',
 							'class' => 'modal-header-icon'
 							));?><!--<img class="modal-header-icon" src="/img/icon_dark_background.png" ></img>--><?= __("Responder"); ?></h4>
-					</div>
-					<div class="modal-body">
-						<div class="container-fluid">
-							<div class="col-sm-12">
-								<?= $this->Form->create('Comment', array('action' => '/add')); ?>
-								<?= $this->Form->input("user_id", array("type" => "hidden", "value" => $this->Session->read("User.id")));?>
-								<?= $this->Form->input("query_id", array("type" => "hidden", "value" => $targetQuery["Query"]["id"]));?>
+						</div>
+						<div class="modal-body">
+							<div class="container-fluid">
+								<div class="col-sm-12">
+									<?= $this->Form->create('Comment', array('action' => '/add')); ?>
+									<?= $this->Form->input("user_id", array("type" => "hidden", "value" => $this->Session->read("User.id")));?>
+									<?= $this->Form->input("query_id", array("type" => "hidden", "value" => $targetQuery["Query"]["id"]));?>
 
-								<h3>Danos tu solución:</h3><br>
+									<h3>Danos tu solución:</h3><br>
 
-								<div class="form-group">
-									<?= $this->Form->textarea("content", array("class" => "form-control", "placeholder" => "Tu respuesta es...", "id" => "textArea", "rows" => "8"));?>
+									<div class="form-group">
+										<?= $this->Form->textarea("content", array("class" => "form-control", "placeholder" => "Tu respuesta es...", "id" => "textArea", "rows" => "8"));?>
+									</div>
+									<div class="form-group pull-right">
+										<?= $this->Form->submit('Comentar', array('class' => 'btn btn-info')); ?>
+
+									</div>
+									<?= $this->Form->end(); ?>
+
 								</div>
-								<div class="form-group pull-right">
-									<?= $this->Form->submit('Comentar', array('class' => 'btn btn-info')); ?>
-
-								</div>
-								<?= $this->Form->end(); ?>
 
 							</div>
-
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
