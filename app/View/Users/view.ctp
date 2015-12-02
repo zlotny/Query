@@ -1,4 +1,4 @@
-<?php 
+	<?php 
 /*
 	echo $this->Session->read("User.email"); 
 	print_r($targetUser["User"]);*/

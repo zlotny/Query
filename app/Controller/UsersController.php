@@ -84,6 +84,7 @@ class UsersController extends AppController
             throw new NotFoundException(__('Invalid user'));
         }
         $user = $this->User->findById($id);
+
         if (!$user) {
             throw new NotFoundException(__('Invalid user'));
         }
@@ -107,7 +108,6 @@ class UsersController extends AppController
         if($this->request->data['User']['pass'] != ""){
             $this->request->data['User']['pass'] = md5($this->request->data['User']['pass']);
         } else {
-            $user = $this->User->findByEmail($this->request->data['User']['email']);
             $this->request->data['User']['pass'] = $user["User"]["pass"];
         }
 
