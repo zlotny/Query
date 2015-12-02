@@ -1,6 +1,6 @@
 <?php 
 class CommentsController extends AppController {
-	public $components = array('Flash');
+	public $components = array('Flash', 'Session');
 
 	public function index() {
 

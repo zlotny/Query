@@ -1,7 +1,7 @@
 <?php
 class QueriesController extends AppController {
 	public $helpers = array('Html', 'Form');
-	public $components = array('Flash', 'Paginator');
+	public $components = array('Session', 'Paginator');
 
 	public $paginate = array(
 		'limit' => 10,
