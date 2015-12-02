@@ -17,6 +17,11 @@
         <?= $this->Html->css('bootstrap-theme') ?>
         <?= $this->Html->css('font-awesome') ?>
         <?= $this->Html->css('custom') ?>
+        <?= $this->Html->css('alertify.core') ?>
+        <?= $this->Html->css('alertify.bootstrap') ?>
+        <?= $this->Html->css('alertify.default') ?>
+
+
 
     </head>
     <body>
@@ -116,7 +121,11 @@
         <?= $this->Html->script('validator.min') ?>
         <?= $this->Html->script('boobles') ?>
         <?= $this->Html->script('main') ?>
+        <?= $this->Html->script('alertify.min') ?>
         <?= $this->element('defaultScripts'); ?>
+        <?php
+        echo $this->Session->flash();
+        ?>
     </body>
     </html>
 

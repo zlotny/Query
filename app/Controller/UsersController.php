@@ -33,7 +33,7 @@ class UsersController extends AppController
                 $this->Session->write('User.username', $toLogin['User']['username']);
                 $this->Session->write('User.profile_pic_route', $toLogin['User']['profile_pic_route']);
             } else {
-                $this->Flash->error("El usuario no existe");
+                $this->Session->setFlash("El usuario no existe", "alertiflashError");
             }
             $this->redirect(array('controller' => 'queries', 'action' => 'index'));
         }
@@ -68,12 +68,13 @@ class UsersController extends AppController
 
 
                 if ($this->User->save($this->request->data)) {
-                    $this->Flash->success("Usuario creado satisfactoriamente.");
+                    $this->Session->setFlash("Usuario creado satisfactoriamente.", "alertiflashSuccess");
+
                 } else {
-                    $this->Flash->error("Error al registrar usuario.");
+                    $this->Session->setFlash("Error al registrar usuario.", "alertiflashError");
                 }
             } else {
-                $this->Flash->error("Las contraseñas son distintas.");
+                $this->Session->setFlash("Las contraseñas son distintas.", "alertiflashError");
             }
             $this->redirect(array('controller' => 'queries', 'action' => 'index'));
         }
@@ -111,12 +112,17 @@ class UsersController extends AppController
             $this->request->data['User']['pass'] = $user["User"]["pass"];
         }
 
-        if ($this->User->save($this->request->data)) {
-            $this->Flash->success("Usuario actualizado satisfactoriamente.");
-        } else {
-            $this->Flash->error("Error al actualizar usuario.");
+        $auxByEmail = $this->User->findByEmail($this->request->data['User']['email']);
+        if(empty($auxByEmail['User']['email']) || ($auxByEmail['User']['email'] == $user['User']['email'] && $auxByEmail['User']['id'] == $user['User']['id'] )){
+            if ($this->User->save($this->request->data)) {
+                $this->Session->setFlash("Usuario actualizado satisfactoriamente.", "alertiflashSuccess");
+            } else {
+                $this->Session->setFlash("Error al actualizar usuario.", "alertiflashError");
+            }
         }
-
+        else {
+            $this->Session->setFlash("Error al actualizar usuario.", "alertiflashError");
+        }
 
         $this->redirect(array('controller' => 'users', 'action' => 'view', $id));
     }

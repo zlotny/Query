@@ -1,0 +1,1 @@
+<script>alertify.success("<?php echo h($message)?>")</script>

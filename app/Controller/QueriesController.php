@@ -179,9 +179,10 @@ class QueriesController extends AppController {
 		if ($this->request->is('post')) {
 
 			if ($this->Query->saveAssociated($this->request->data)) {
-				$this->Flash->success("Query creada satisfactoriamente.");
+				$this->Session->setFlash("Query creada satisfactoriamente.", "alertiflashSuccess");
+
 			} else {
-				$this->Flash->error("Error al crear query.");
+				$this->Session->setFlash("Error al crear query.", "alertiflashError");
 			}
 			
 			$this->redirect(array('controller' => 'queries', 'action' => 'index'));
