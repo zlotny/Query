@@ -88,9 +88,9 @@ body{
 }
 
 .navbar-img {
-  max-height:20px;
-  width:auto;
-  vertical-align:middle;
+	max-height:20px;
+	width:auto;
+	vertical-align:middle;
 }
 
 .puntuacion{
@@ -299,3 +299,9 @@ body{
 	border-width: 1px;
 	border-color: rgba(150,150,150,0.2);
 }
+
+.profile-view-pic{
+	max-width: 200px;
+	margin-top: 25px;
+}
+

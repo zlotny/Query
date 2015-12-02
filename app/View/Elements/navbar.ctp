@@ -68,7 +68,7 @@
 						}
 						echo "</li>";
 						echo "<li>";
-						echo $this->Html->link(__("Desconectarse"), "/users/logout");
+						echo $this->Html->link('<i class="fa fa-sign-out"></i>', "/users/logout", array("escape" => false));
 						echo "</li>";	
 					}else{
 						?>

@@ -15,10 +15,10 @@
 						</div>
 					</div>
 
-					<div class="col-md-4 col-sm-12">
+					<div class="col-md-3 col-sm-12">
 						<div class="team-member">
 							<div class="member-image">
-								<?= $this->Html->image("user-icons/".$targetUser["User"]["profile_pic_route"] , array('class' => 'img-responsive')); ?>
+								<?= $this->Html->image("user-icons/".$targetUser["User"]["profile_pic_route"] , array('class' => 'img-responsive, profile-view-pic')); ?>
 							</div>
 						</div>
 					</div>
@@ -29,7 +29,7 @@
 					if($userActual != $userToView){ 
 						?>
 
-						<div class="col-md-8 col-sm-12">
+						<div class="col-md-6 col-sm-12">
 							<div class="form-group">
 								<label for="name"><?php echo __("Correo") ?></label>
 								<div class="well well-sm"><?= $targetUser["User"]["email"]; ?> 
@@ -41,6 +41,7 @@
 								<div class="well well-sm"><?= $targetUser["User"]["username"]; ?> </div>
 							</div>
 						</div>
+						<div class="col-md-3 col-sm-12"></div>
 						<?php } else { ?>
 						<div class="col-md-6 col-sm-12">
 							<?= $this->Form->create('User', array('action' => '/edit/'.$this->Session->read("User.id"), "data-toggle" => "validator", "enctype" => "multipart/form-data")); ?>
@@ -79,7 +80,10 @@
 						} ?>
 
 					</div>
+
+					<div class="col-md-3 col-sm-12"></div>
 				</div>
 
 			</div>
 		</div>
+	</div>
