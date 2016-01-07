@@ -5,6 +5,19 @@
 	<div class="container-fluid row">
 		<div class="col-sm-12 col-xs-8">
 			<small class="creator"><?= __("Creado por")." "; ?><?= $this->Html->link($author["username"], "/users/view/".$author["id"]);?> - <?= $targetQuery["Query"]["created"]; ?></small>
+			<?php
+			$userLogged = $this->Session->read("User.id");
+			if(isset($userLogged)){
+				$voted = $this->requestAction("/users/voted/".$this->Session->read("User.id")."/".$targetQuery["Query"]["id"]);
+				if($voted){
+					?>
+					<small class="pull-right" ><?= $this->Html->link(__("Eliminar Voto") .' <i class="fa fa-trash-o"></i>' , "/queries/deleteVote/".$targetQuery["Query"]["id"]."/".$this->Session->read("User.id")."/".isset($voted), array('escape' => false)); ?></small>
+					<?php
+				}
+			}
+			?>
+
+
 		</div>
 		<div class="visible-xs col-xs-4">
 
@@ -228,8 +241,8 @@
 		
 		<?php 
 			//$targetQuery["Comment"]
-			foreach ($sortedComments as $comment){
-				
+		foreach ($sortedComments as $comment){
+
 			?>
 
 

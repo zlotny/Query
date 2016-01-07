@@ -221,6 +221,16 @@ class QueriesController extends AppController {
 		
 	}
 
+	public function deleteVote($id_query, $userId, $voted)
+	{
+		if($voted){
+			$query = "DELETE FROM queries_users where user_id = $userId and query_id = $id_query";
+			$this->Query->query($query);
+			$this->redirect(array('controller' => 'queries', 'action' => 'view', $id_query));
+		}
+
+	}
+
 
 
 }
